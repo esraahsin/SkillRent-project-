@@ -25,7 +25,7 @@ const allowedOrigins = (process.env.FRONTEND_ORIGIN || 'http://localhost:5173')
   .split(',')
   .map((origin) => origin.trim())
   .filter(Boolean);
-const ALLOW_NO_ORIGIN = process.env.ALLOW_NO_ORIGIN === 'true';
+const ALLOW_NO_ORIGIN = process.env.ALLOW_NO_ORIGIN !== 'false';
 
 function isAllowedOrigin(origin) {
   if (!origin) return ALLOW_NO_ORIGIN;
@@ -106,8 +106,11 @@ function findStoredTokenHash(incomingHash) {
   return null;
 }
 
+const CSRF_EXEMPT_PATHS = ['/auth/login', '/auth/register', '/auth/refresh', '/auth/logout', '/auth/csrf'];
+
 function csrfProtection(req, res, next) {
   if (['GET', 'HEAD', 'OPTIONS'].includes(req.method)) return next();
+  if (CSRF_EXEMPT_PATHS.includes(req.path)) return next();
   const cookieToken = req.cookies.skillrent_csrf;
   const headerToken = req.headers['x-csrf-token'];
   if (!cookieToken || !headerToken || cookieToken !== headerToken) {
