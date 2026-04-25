@@ -66,7 +66,7 @@ cd backend
 npm install
 npm run dev
 ```
-Backend runs at: `http://localhost:4000`
+Backend Docker target default: `http://backend:4000`
 
 ### 2) Frontend
 ```bash
@@ -74,7 +74,7 @@ cd frontend
 npm install
 npm run dev
 ```
-Frontend runs at: `http://localhost:5173`
+Frontend Docker origin default: `http://frontend:5173`
 
 Vite proxy is configured to route `/api` and Socket.io to backend.
 

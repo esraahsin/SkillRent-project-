@@ -19,7 +19,7 @@ const MIN_SESSION_DURATION_MS = 10 * 60 * 1000;
 const app = express();
 const server = http.createServer(app);
 
-const allowedOrigin = process.env.FRONTEND_ORIGIN || 'http://localhost:5173';
+const allowedOrigin = process.env.FRONTEND_ORIGIN || 'http://frontend:5173';
 const COOKIE_ENCRYPTION_KEY = crypto
   .createHash('sha256')
   .update(process.env.COOKIE_ENCRYPTION_SECRET || 'skillrent-cookie-encryption-secret')
