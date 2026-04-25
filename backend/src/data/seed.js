@@ -8,11 +8,11 @@ async function seed() {
 
   const demoUsers = [
     {
-      name: 'Amira Hassan',
-      email: 'amira@skillrent.demo',
+      name: 'Sarah Martinez',
+      email: 'sarah@skillrent.dev',
       city: 'Cairo',
       bio: 'Full-stack developer with 6 years of experience building scalable web apps with React, Node and PostgreSQL.',
-      role: 'provider',
+      role: 'both',
       avatarUrl: 'https://i.pravatar.cc/150?img=47',
       skill: {
         category: 'Tech & Development',
@@ -23,11 +23,11 @@ async function seed() {
       },
     },
     {
-      name: 'Omar Farouk',
-      email: 'omar@skillrent.demo',
+      name: 'Ahmed Khalil',
+      email: 'ahmed@skillrent.dev',
       city: 'Alexandria',
       bio: 'Cybersecurity consultant specializing in web app pentesting and secure code review.',
-      role: 'provider',
+      role: 'both',
       avatarUrl: 'https://i.pravatar.cc/150?img=12',
       skill: {
         category: 'Tech & Development',
@@ -38,11 +38,11 @@ async function seed() {
       },
     },
     {
-      name: 'Nadia Khaled',
-      email: 'nadia@skillrent.demo',
+      name: 'Linda Chen',
+      email: 'linda@skillrent.dev',
       city: 'Giza',
       bio: 'Senior product designer focused on mobile-first UX and design systems.',
-      role: 'provider',
+      role: 'both',
       avatarUrl: 'https://i.pravatar.cc/150?img=32',
       skill: {
         category: 'Design & Creativity',

@@ -21,20 +21,19 @@ const MIN_SESSION_DURATION_MS = 10 * 60 * 1000;
 const app = express();
 const server = http.createServer(app);
 
-const allowedOrigins = (process.env.FRONTEND_ORIGIN || 'http://localhost:5173')
+const allowedOrigins = (process.env.FRONTEND_ORIGIN || 'http://localhost:5173,http://localhost:4173')
   .split(',')
   .map((origin) => origin.trim())
   .filter(Boolean);
-const ALLOW_NO_ORIGIN = process.env.ALLOW_NO_ORIGIN === 'true';
 
 function isAllowedOrigin(origin) {
-  if (!origin) return ALLOW_NO_ORIGIN;
-  return allowedOrigins.includes(origin);
+  if (!origin) return true; // Allow same-origin & non-browser (curl, Postman, proxied)
+  return allowedOrigins.some((allowed) => origin === allowed || origin.startsWith('http://localhost:'));
 }
 
 function corsOriginValidator(origin, callback) {
   if (isAllowedOrigin(origin)) return callback(null, true);
-  return callback(new Error('Not allowed by CORS'));
+  return callback(null, false); // reject silently instead of throwing
 }
 
 const COOKIE_ENCRYPTION_KEY = crypto
@@ -106,8 +105,18 @@ function findStoredTokenHash(incomingHash) {
   return null;
 }
 
+// Paths that are exempt from CSRF (they establish the token or are safe)
+const CSRF_EXEMPT_PATHS = [
+  '/api/auth/csrf',
+  '/api/auth/login',
+  '/api/auth/register',
+  '/api/auth/refresh',
+  '/api/auth/logout',
+];
+
 function csrfProtection(req, res, next) {
   if (['GET', 'HEAD', 'OPTIONS'].includes(req.method)) return next();
+  if (CSRF_EXEMPT_PATHS.includes(req.path)) return next();
   const cookieToken = req.cookies.skillrent_csrf;
   const headerToken = req.headers['x-csrf-token'];
   if (!cookieToken || !headerToken || cookieToken !== headerToken) {
@@ -897,6 +906,13 @@ io.on('connection', (socket) => {
     store.messages.push(message);
     io.to(sessionId).emit('message:new', message);
   });
+});
+
+// ==================== Error Handler ====================
+app.use((err, _req, res, _next) => {
+  console.error('[server error]', err.message || err);
+  const status = err.status || err.statusCode || 500;
+  res.status(status).json({ error: status === 500 ? 'Internal server error' : err.message });
 });
 
 // ==================== Bootstrap ====================
