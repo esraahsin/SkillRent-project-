@@ -1,0 +1,19 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    environment:
+      PORT: 4000
+      HOST: 0.0.0.0
+      FRONTEND_ORIGIN: http://localhost:5173
+      ALLOW_NO_ORIGIN: "true"
+    ports:
+      - "4000:4000"
+
+  frontend:
+    build:
+      context: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
