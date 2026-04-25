@@ -28,7 +28,8 @@ export default function SessionsPage() {
   async function loadSessions() {
     setLoading(true);
     try {
-      const { sessions: list } = await api('/sessions');
+      // FIX: was '/sessions', server route is '/sessions/me'
+      const { sessions: list } = await api('/sessions/me');
       setSessions(list);
       if (!activeId && list[0]) setActiveId(list[0].id);
     } catch (err) {
@@ -96,9 +97,16 @@ export default function SessionsPage() {
 
   async function submitReview() {
     try {
-      await api(`/sessions/${activeId}/review`, {
+      // FIX: was '/sessions/${activeId}/review' (non-existent route)
+      // Server route is POST /api/reviews with sessionId + revieweeId in body
+      await api('/reviews', {
         method: 'POST',
-        body: { rating: Number(reviewForm.rating), comment: reviewForm.comment },
+        body: {
+          sessionId: activeId,
+          revieweeId: otherParticipant?.id,
+          rating: Number(reviewForm.rating),
+          comment: reviewForm.comment,
+        },
       });
       toast.success('Review submitted!');
       setReviewOpen(false);
@@ -152,10 +160,7 @@ export default function SessionsPage() {
                         } />
                       </div>
                       <div className="text-xs truncate" style={{ color: 'var(--text-dim)' }}>
-                        {s.category} · {s.subcategory}
-                      </div>
-                      <div className="text-[10px] mt-0.5" style={{ color: 'var(--text-dim)' }}>
-                        {formatRelative(s.startedAt || s.createdAt)}
+                        {formatRelative(s.actualStart || s.createdAt)}
                       </div>
                     </div>
                   </button>
@@ -179,7 +184,7 @@ export default function SessionsPage() {
                         </Badge>
                       </div>
                       <div className="text-xs" style={{ color: 'var(--text-dim)' }}>
-                        {active.category} · {active.subcategory} · ${active.agreedAmount}/hr
+                        ${active.agreedAmount}/hr
                       </div>
                     </div>
                   </div>

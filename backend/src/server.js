@@ -21,7 +21,7 @@ const MIN_SESSION_DURATION_MS = 10 * 60 * 1000;
 const app = express();
 const server = http.createServer(app);
 
-const allowedOrigins = (process.env.FRONTEND_ORIGIN || 'http://localhost:5173')
+const allowedOrigins = (process.env.FRONTEND_ORIGIN || 'http://localhost:5173,http://localhost:5174')
   .split(',')
   .map((origin) => origin.trim())
   .filter(Boolean);
@@ -110,15 +110,28 @@ function csrfProtection(req, res, next) {
   if (['GET', 'HEAD', 'OPTIONS'].includes(req.method)) return next();
   const cookieToken = req.cookies.skillrent_csrf;
   const headerToken = req.headers['x-csrf-token'];
+  console.log('[CSRF]', new Date().toISOString(), req.method, req.path, {
+    cookie: !!cookieToken,
+    header: !!headerToken,
+    cookieSnippet: cookieToken ? cookieToken.slice(0,8) + '...' : 'none',
+    headerSnippet: headerToken ? headerToken.slice(0,8) + '...' : 'none',
+    match: cookieToken === headerToken
+  });
   if (!cookieToken || !headerToken || cookieToken !== headerToken) {
     return res.status(403).json({ error: 'CSRF validation failed' });
   }
   return next();
+
 }
 
 app.use('/api', apiLimiter);
 app.use('/api/auth', authLimiter);
 app.use('/api', csrfProtection);
+
+app.use((err, req, res, next) => {
+  console.error('[SERVER ERROR]', new Date().toISOString(), req.method, req.url, err.stack || err.message || err);
+  res.status(500).json({ error: 'Internal server error' });
+});
 
 const io = new Server(server, {
   cors: { origin: corsOriginValidator, credentials: true },
@@ -277,7 +290,9 @@ app.post('/api/auth/login', async (req, res) => {
   if (!user) return res.status(401).json({ error: 'Invalid credentials' });
 
   const isValid = await bcrypt.compare(String(password || ''), user.passwordHash);
+  console.log('[LOGIN]', new Date().toISOString(), email, 'bcrypt isValid:', isValid);
   if (!isValid) return res.status(401).json({ error: 'Invalid credentials' });
+
 
   const accessToken = issueAccessToken(user.id);
   const refreshToken = issueRefreshToken(user.id);

@@ -86,7 +86,7 @@ export default function LoginPage() {
           <div className="mt-6 rounded-xl p-3 text-xs" style={{ background: 'rgba(99,102,241,0.08)', border: '1px solid rgba(99,102,241,0.2)' }}>
             <div className="font-semibold text-indigo-300 mb-1">Demo accounts</div>
             <div style={{ color: 'var(--text-muted)' }}>
-              Emails: <code>sarah@skillrent.dev</code>, <code>ahmed@skillrent.dev</code>, <code>linda@skillrent.dev</code><br />
+Emails: <code>amira@skillrent.demo</code>, <code>omar@skillrent.demo</code>, <code>nadi@skillrent.demo</code><br />
               Password: <code>password123</code>
             </div>
           </div>

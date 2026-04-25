@@ -45,8 +45,9 @@ export default function MarketplacePage() {
           Object.entries(f).forEach(([k, v]) => {
             if (v !== '' && v !== null && v !== undefined) params.set(k, v);
           });
-          const { entries: res } = await api(`/providers/search?${params.toString()}`);
-          setEntries(res);
+          // FIX: server returns { providers }, not { entries }
+          const { providers } = await api(`/providers/search?${params.toString()}`);
+          setEntries(providers || []);
         } catch (err) {
           toast.error(err.message || 'Search failed');
         } finally {
@@ -174,9 +175,8 @@ export default function MarketplacePage() {
                 options={[
                   { value: 'relevance', label: 'Relevance' },
                   { value: 'rating', label: 'Highest rated' },
-                  { value: 'rate-asc', label: 'Price: low to high' },
-                  { value: 'rate-desc', label: 'Price: high to low' },
-                  { value: 'newest', label: 'Newest' },
+                  { value: 'rate_asc', label: 'Price: low to high' },
+                  { value: 'rate_desc', label: 'Price: high to low' },
                 ]}
               />
             </div>

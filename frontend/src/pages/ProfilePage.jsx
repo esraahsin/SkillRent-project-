@@ -38,7 +38,8 @@ export default function ProfilePage() {
 
   async function loadSkills() {
     try {
-      const { skills } = await api('/skills/mine');
+      // FIX: was '/skills/mine', server route is '/skills/me'
+      const { skills } = await api('/skills/me');
       setMySkills(skills);
     } catch {
       /* ignore */
@@ -81,7 +82,7 @@ export default function ProfilePage() {
   }
 
   const subcats = taxonomy.find((t) => t.category === newSkill.category)?.subcategories || [];
-  const isProvider = user?.mode === 'provider' || user?.mode === 'both';
+  const isProvider = user?.role === 'provider' || user?.role === 'both';
 
   return (
     <AppShell>
