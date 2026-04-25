@@ -19,13 +19,20 @@ const MIN_SESSION_DURATION_MS = 10 * 60 * 1000;
 const app = express();
 const server = http.createServer(app);
 
-const allowedOrigins = (process.env.FRONTEND_ORIGIN || 'http://localhost:5173,http://frontend:5173')
+const allowedOrigins = (process.env.FRONTEND_ORIGIN || 'http://localhost:5173')
   .split(',')
   .map((origin) => origin.trim())
   .filter(Boolean);
+const ALLOW_NO_ORIGIN = process.env.ALLOW_NO_ORIGIN === 'true';
 
 function isAllowedOrigin(origin) {
-  return !origin || allowedOrigins.includes(origin);
+  if (!origin) return ALLOW_NO_ORIGIN;
+  return allowedOrigins.includes(origin);
+}
+
+function corsOriginValidator(origin, callback) {
+  if (isAllowedOrigin(origin)) return callback(null, true);
+  return callback(new Error('Not allowed by CORS'));
 }
 const COOKIE_ENCRYPTION_KEY = crypto
   .createHash('sha256')
@@ -34,10 +41,7 @@ const COOKIE_ENCRYPTION_KEY = crypto
 
 app.use(helmet());
 app.use(cors({
-  origin(origin, callback) {
-    if (isAllowedOrigin(origin)) return callback(null, true);
-    return callback(new Error('Not allowed by CORS'));
-  },
+  origin: corsOriginValidator,
   credentials: true
 }));
 app.use(express.json());
@@ -118,10 +122,7 @@ app.use('/api', csrfProtection);
 
 const io = new Server(server, {
   cors: {
-    origin(origin, callback) {
-      if (isAllowedOrigin(origin)) return callback(null, true);
-      return callback(new Error('Not allowed by CORS'));
-    },
+    origin: corsOriginValidator,
     credentials: true
   }
 });

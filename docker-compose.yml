@@ -6,15 +6,13 @@ services:
       PORT: 4000
       HOST: 0.0.0.0
       FRONTEND_ORIGIN: http://localhost:5173
+      ALLOW_NO_ORIGIN: "true"
     ports:
       - "4000:4000"
 
   frontend:
     build:
       context: ./frontend
-    environment:
-      VITE_BACKEND_URL: http://backend:4000
-      VITE_SOCKET_URL: /
     depends_on:
       - backend
     ports:
