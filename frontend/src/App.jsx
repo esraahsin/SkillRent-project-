@@ -1,15 +1,23 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { io } from 'socket.io-client'
 
 const API = '/api'
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || '/'
+let currentCsrfToken = ''
+
+function updateCsrfToken(token) {
+  currentCsrfToken = token || ''
+}
 
 async function api(path, { token, method = 'GET', body } = {}) {
+  const normalizedMethod = method.toUpperCase()
   const res = await fetch(`${API}${path}`, {
-    method,
+    method: normalizedMethod,
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...(normalizedMethod !== 'GET' && currentCsrfToken ? { 'x-csrf-token': currentCsrfToken } : {}),
     },
     body: body ? JSON.stringify(body) : undefined,
   })
@@ -83,15 +91,18 @@ function App() {
 
   const [messageInput, setMessageInput] = useState('')
 
-  const socket = useMemo(() => io('/', { autoConnect: false }), [])
+  const socket = useMemo(() => io(SOCKET_URL, { autoConnect: false }), [])
 
   const selectedSession = sessions.find((s) => s.id === selectedSessionId)
 
   const isProviderMode = user?.role === 'provider' || user?.role === 'both'
   const isSeekerMode = user?.role === 'seeker' || user?.role === 'both'
 
-  async function bootstrap() {
+  const bootstrap = useCallback(async () => {
     try {
+      const csrfRes = await api('/auth/csrf')
+      updateCsrfToken(csrfRes.csrfToken)
+
       const [taxonomyRes] = await Promise.all([api('/taxonomy')])
       setTaxonomy(taxonomyRes.taxonomy)
 
@@ -100,6 +111,7 @@ function App() {
           const refreshed = await api('/auth/refresh', { method: 'POST' })
           setToken(refreshed.accessToken)
           setUser(refreshed.user)
+          updateCsrfToken(refreshed.csrfToken)
         } catch {
           // not logged in
         }
@@ -107,35 +119,37 @@ function App() {
     } catch (e) {
       setError(e.message)
     }
-  }
+  }, [token])
 
   async function refreshAuthedData(nextToken = token) {
     if (!nextToken) return
 
-    const [providersRes, requestsRes, sessionsRes] = await Promise.all([
+    const dashboardCalls = []
+    if (isProviderMode) dashboardCalls.push(api('/dashboard/provider', { token: nextToken }))
+    if (isSeekerMode) dashboardCalls.push(api('/dashboard/seeker', { token: nextToken }))
+
+    const [providersRes, requestsRes, sessionsRes, ...dashboards] = await Promise.all([
       api('/providers'),
       api('/requests', { token: nextToken }),
       api('/sessions/me', { token: nextToken }),
+      ...dashboardCalls,
     ])
 
     setProviders(providersRes.providers)
     setRequests(requestsRes.requests)
     setSessions(sessionsRes.sessions)
 
+    let cursor = 0
     if (isProviderMode) {
-      const dash = await api('/dashboard/provider', { token: nextToken })
-      setProviderDashboard(dash)
+      setProviderDashboard(dashboards[cursor])
+      cursor += 1
     }
-
-    if (isSeekerMode) {
-      const dash = await api('/dashboard/seeker', { token: nextToken })
-      setSeekerDashboard(dash)
-    }
+    if (isSeekerMode) setSeekerDashboard(dashboards[cursor])
   }
 
   useEffect(() => {
     bootstrap()
-  }, [])
+  }, [bootstrap])
 
   useEffect(() => {
     if (!token || !user) return
@@ -175,6 +189,7 @@ function App() {
       const data = await api('/auth/register', { method: 'POST', body: registerForm })
       setToken(data.accessToken)
       setUser(data.user)
+      updateCsrfToken(data.csrfToken)
       setActiveTab('onboarding')
     } catch (err) {
       setError(err.message)
@@ -191,6 +206,7 @@ function App() {
       })
       setToken(data.accessToken)
       setUser(data.user)
+      updateCsrfToken(data.csrfToken)
       await refreshAuthedData(data.accessToken)
       setActiveTab('marketplace')
     } catch (err) {

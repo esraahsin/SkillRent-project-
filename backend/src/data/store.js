@@ -1,4 +1,4 @@
-const { v4: uuid } = require('uuid');
+const crypto = require('crypto');
 
 const store = {
   users: [],
@@ -13,7 +13,7 @@ const store = {
 };
 
 function createId(prefix) {
-  return `${prefix}_${uuid().slice(0, 8)}`;
+  return `${prefix}_${crypto.randomUUID().slice(0, 8)}`;
 }
 
 function nowIso() {
