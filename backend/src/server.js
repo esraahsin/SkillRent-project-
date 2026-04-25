@@ -3,8 +3,10 @@ const cors = require('cors');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
 const http = require('http');
 const { Server } = require('socket.io');
+const rateLimit = require('express-rate-limit');
 const { z } = require('zod');
 const { SKILL_TAXONOMY } = require('./constants/taxonomy');
 const { store, createId, nowIso } = require('./data/store');
@@ -12,16 +14,94 @@ const { authRequired } = require('./middleware/auth');
 const { issueAccessToken, issueRefreshToken, verifyRefreshToken } = require('./utils/tokens');
 const { verifySkillDescription, semanticRecommendProviders } = require('./services/aiIntegration');
 const { inspectMessage, buildTrustScore } = require('./services/cyberIntegration');
+const MIN_SESSION_DURATION_MS = 10 * 60 * 1000;
 
 const app = express();
 const server = http.createServer(app);
 
 const allowedOrigin = process.env.FRONTEND_ORIGIN || 'http://localhost:5173';
+const COOKIE_ENCRYPTION_KEY = crypto
+  .createHash('sha256')
+  .update(process.env.COOKIE_ENCRYPTION_SECRET || 'skillrent-cookie-encryption-secret')
+  .digest();
 
 app.use(helmet());
 app.use(cors({ origin: allowedOrigin, credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
+app.set('trust proxy', 1);
+
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 300,
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 25,
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
+function setCsrfCookie(res) {
+  const csrfToken = crypto.randomBytes(24).toString('hex');
+  res.cookie('skillrent_csrf', csrfToken, {
+    httpOnly: false,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 7 * 24 * 60 * 60 * 1000
+  });
+  return csrfToken;
+}
+
+function hashToken(token) {
+  return crypto.createHash('sha256').update(token).digest('hex');
+}
+
+function encryptToken(plainToken) {
+  const iv = crypto.randomBytes(12);
+  const cipher = crypto.createCipheriv('aes-256-gcm', COOKIE_ENCRYPTION_KEY, iv);
+  const encrypted = Buffer.concat([cipher.update(plainToken, 'utf8'), cipher.final()]);
+  const authTag = cipher.getAuthTag();
+  return `${iv.toString('base64url')}.${authTag.toString('base64url')}.${encrypted.toString('base64url')}`;
+}
+
+function decryptToken(serializedToken) {
+  const [ivBase64, tagBase64, encryptedBase64] = String(serializedToken || '').split('.');
+  if (!ivBase64 || !tagBase64 || !encryptedBase64) throw new Error('Invalid token payload');
+
+  const iv = Buffer.from(ivBase64, 'base64url');
+  const authTag = Buffer.from(tagBase64, 'base64url');
+  const encrypted = Buffer.from(encryptedBase64, 'base64url');
+  const decipher = crypto.createDecipheriv('aes-256-gcm', COOKIE_ENCRYPTION_KEY, iv);
+  decipher.setAuthTag(authTag);
+  return Buffer.concat([decipher.update(encrypted), decipher.final()]).toString('utf8');
+}
+
+function findStoredTokenHash(incomingHash) {
+  for (const storedHash of store.refreshTokens.keys()) {
+    const stored = Buffer.from(storedHash, 'hex');
+    const incoming = Buffer.from(incomingHash, 'hex');
+    if (stored.length === incoming.length && crypto.timingSafeEqual(stored, incoming)) return storedHash;
+  }
+  return null;
+}
+
+function csrfProtection(req, res, next) {
+  if (['GET', 'HEAD', 'OPTIONS'].includes(req.method)) return next();
+  const cookieToken = req.cookies.skillrent_csrf;
+  const headerToken = req.headers['x-csrf-token'];
+  if (!cookieToken || !headerToken || cookieToken !== headerToken) {
+    return res.status(403).json({ error: 'CSRF validation failed' });
+  }
+  return next();
+}
+
+app.use('/api', apiLimiter);
+app.use('/api/auth', authLimiter);
+app.use('/api', csrfProtection);
 
 const io = new Server(server, {
   cors: { origin: allowedOrigin, credentials: true }
@@ -33,9 +113,10 @@ function sanitizeUser(user) {
 }
 
 function setRefreshCookie(res, refreshToken) {
-  res.cookie('skillrent_refresh', refreshToken, {
+  const encryptedToken = encryptToken(refreshToken);
+  res.cookie('skillrent_refresh', encryptedToken, {
     httpOnly: true,
-    secure: false,
+    secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     maxAge: 7 * 24 * 60 * 60 * 1000
   });
@@ -82,6 +163,11 @@ app.get('/api/taxonomy', (_req, res) => {
   res.json({ taxonomy: SKILL_TAXONOMY });
 });
 
+app.get('/api/auth/csrf', (_req, res) => {
+  const csrfToken = setCsrfCookie(res);
+  res.json({ csrfToken });
+});
+
 app.post('/api/auth/register', async (req, res) => {
   const parsed = registrationSchema.safeParse(req.body);
   if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
@@ -114,20 +200,23 @@ app.post('/api/auth/register', async (req, res) => {
   const dayAgo = Date.now() - 24 * 60 * 60 * 1000;
   const sameIpRecent = store.registrationEvents.filter((x) => x.ip === req.ip && x.createdAt >= dayAgo);
   if (sameIpRecent.length > 2) {
+    const impactedUserIds = new Set();
     sameIpRecent.forEach((event) => {
       pushAnomaly(event.userId, 'Rule 4 - Unusual IP behavior', 'high', `IP ${req.ip} registered ${sameIpRecent.length} accounts in 24h`);
-      recalcTrust(event.userId);
+      impactedUserIds.add(event.userId);
     });
+    impactedUserIds.forEach((userId) => recalcTrust(userId));
   }
 
   console.log(`[mock-email] Verification email sent to ${email}`);
 
   const accessToken = issueAccessToken(user.id);
   const refreshToken = issueRefreshToken(user.id);
-  store.refreshTokens.set(refreshToken, user.id);
+  store.refreshTokens.set(hashToken(refreshToken), user.id);
   setRefreshCookie(res, refreshToken);
+  const csrfToken = setCsrfCookie(res);
 
-  return res.status(201).json({ accessToken, user: sanitizeUser(user) });
+  return res.status(201).json({ accessToken, user: sanitizeUser(user), csrfToken });
 });
 
 app.post('/api/auth/login', async (req, res) => {
@@ -140,15 +229,26 @@ app.post('/api/auth/login', async (req, res) => {
 
   const accessToken = issueAccessToken(user.id);
   const refreshToken = issueRefreshToken(user.id);
-  store.refreshTokens.set(refreshToken, user.id);
+  store.refreshTokens.set(hashToken(refreshToken), user.id);
   setRefreshCookie(res, refreshToken);
+  const csrfToken = setCsrfCookie(res);
 
-  return res.json({ accessToken, user: sanitizeUser(user) });
+  return res.json({ accessToken, user: sanitizeUser(user), csrfToken });
 });
 
 app.post('/api/auth/refresh', (req, res) => {
-  const token = req.cookies.skillrent_refresh;
-  if (!token || !store.refreshTokens.has(token)) return res.status(401).json({ error: 'Refresh token missing' });
+  const encryptedToken = req.cookies.skillrent_refresh;
+  let token;
+
+  try {
+    token = decryptToken(encryptedToken);
+  } catch {
+    return res.status(401).json({ error: 'Refresh token missing' });
+  }
+
+  const tokenHash = token ? hashToken(token) : '';
+  const storedTokenHash = findStoredTokenHash(tokenHash);
+  if (!token || !storedTokenHash) return res.status(401).json({ error: 'Refresh token missing' });
 
   try {
     const payload = verifyRefreshToken(token);
@@ -156,17 +256,28 @@ app.post('/api/auth/refresh', (req, res) => {
     if (!user) return res.status(401).json({ error: 'User not found' });
 
     const accessToken = issueAccessToken(user.id);
-    return res.json({ accessToken, user: sanitizeUser(user) });
+    const csrfToken = setCsrfCookie(res);
+    return res.json({ accessToken, user: sanitizeUser(user), csrfToken });
   } catch {
-    store.refreshTokens.delete(token);
+    if (storedTokenHash) store.refreshTokens.delete(storedTokenHash);
     return res.status(401).json({ error: 'Invalid refresh token' });
   }
 });
 
 app.post('/api/auth/logout', (req, res) => {
-  const token = req.cookies.skillrent_refresh;
-  if (token) store.refreshTokens.delete(token);
+  const encryptedToken = req.cookies.skillrent_refresh;
+  if (encryptedToken) {
+    try {
+      const token = decryptToken(encryptedToken);
+      const tokenHash = hashToken(token);
+      const storedTokenHash = findStoredTokenHash(tokenHash);
+      if (storedTokenHash) store.refreshTokens.delete(storedTokenHash);
+    } catch {
+      // ignore invalid cookie payload
+    }
+  }
   res.clearCookie('skillrent_refresh');
+  res.clearCookie('skillrent_csrf');
   res.json({ ok: true });
 });
 
@@ -286,6 +397,9 @@ app.post('/api/requests/:requestId/accept', authRequired, (req, res) => {
 
   const scheduledStart = req.body.scheduledStart || new Date(Date.now() + 5 * 60 * 1000).toISOString();
   const scheduledEnd = req.body.scheduledEnd || new Date(new Date(scheduledStart).getTime() + 60 * 60 * 1000).toISOString();
+  const providerSkill = store.skills.find((s) => s.userId === providerId && s.category === requestItem.category && s.subcategory === requestItem.subcategory)
+    || store.skills.find((s) => s.userId === providerId);
+  const agreedAmount = Number(requestItem.budget || providerSkill?.hourlyRate || 25);
 
   const session = {
     id: createId('sess'),
@@ -296,6 +410,7 @@ app.post('/api/requests/:requestId/accept', authRequired, (req, res) => {
     scheduledEnd,
     actualStart: null,
     actualEnd: null,
+    agreedAmount,
     status: 'pending',
     protectedMode: false,
     createdAt: nowIso()
@@ -341,9 +456,8 @@ app.post('/api/sessions/:sessionId/complete', authRequired, (req, res) => {
   if (!session) return res.status(404).json({ error: 'Session not found' });
   if (session.seekerId !== req.user.id) return res.status(403).json({ error: 'Only seeker can complete' });
 
-  const minDurationMs = 10 * 60 * 1000;
   const startedAt = new Date(session.actualStart || session.createdAt).getTime();
-  if (Date.now() - startedAt < minDurationMs) {
+  if (Date.now() - startedAt < MIN_SESSION_DURATION_MS) {
     return res.status(400).json({ error: 'Session must run at least 10 minutes before completion' });
   }
 
@@ -443,7 +557,9 @@ app.get('/api/dashboard/provider', authRequired, (req, res) => {
   const sessions = store.sessions.filter((s) => s.providerId === req.user.id);
   const completed = sessions.filter((s) => s.status === 'completed').length;
   const pending = sessions.filter((s) => s.status === 'pending').length;
-  const earnings = sessions.filter((s) => s.status === 'completed').reduce((acc) => acc + 25, 0);
+  const earnings = sessions
+    .filter((s) => s.status === 'completed')
+    .reduce((acc, s) => acc + Number(s.agreedAmount || 0), 0);
   const ratingRows = store.reviews.filter((r) => r.revieweeId === req.user.id);
   const avgRating = ratingRows.length ? ratingRows.reduce((acc, r) => acc + r.rating, 0) / ratingRows.length : 0;
 
@@ -461,11 +577,12 @@ app.get('/api/dashboard/seeker', authRequired, (req, res) => {
   const sessions = store.sessions.filter((s) => s.seekerId === req.user.id);
   const active = sessions.filter((s) => s.status === 'active');
   const past = sessions.filter((s) => s.status === 'completed');
+  const spendingSummary = past.reduce((acc, s) => acc + Number(s.agreedAmount || 0), 0);
 
   res.json({
     activeSessions: active,
     pastSessions: past,
-    spendingSummary: past.length * 25,
+    spendingSummary,
     favoriteProviders: []
   });
 });

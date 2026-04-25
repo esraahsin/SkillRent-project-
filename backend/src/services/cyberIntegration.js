@@ -1,4 +1,8 @@
-const PAYMENT_PATTERNS = [/paypal\.me/i, /pay\s?me/i, /\b(?:http|https):\/\//i, /\b(?:\+?\d[\d\s-]{7,}\d)\b/];
+const PAYPAL_LINK_PATTERN = /paypal\.me/i;
+const PAYMENT_KEYWORD_URL_PATTERN = /(?:http|https):\/\/\S*(pay|wallet|transfer|cashapp|venmo|stripe)\S*/i;
+const PAYMENT_TEXT_PATTERN = /pay\s?me/i;
+const PHONE_NUMBER_PATTERN = /\b(?:\+?\d[\d\s-]{7,}\d)\b/;
+const PAYMENT_PATTERNS = [PAYPAL_LINK_PATTERN, PAYMENT_KEYWORD_URL_PATTERN, PAYMENT_TEXT_PATTERN, PHONE_NUMBER_PATTERN];
 
 function inspectMessage(content) {
   const reasons = [];
