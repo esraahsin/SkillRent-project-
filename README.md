@@ -58,7 +58,18 @@ Tagline: **"Your skills have value. Rent them now."**
   - anomaly-compatible helpers
 - Rule-based anomaly flags are stored and exposed for admin dashboard feed
 
-## Run locally
+## Run with containers
+
+```bash
+docker compose up --build
+```
+
+- Frontend: `http://localhost:5173`
+- Backend API: `http://localhost:4000`
+
+Vite proxy routes `/api` and Socket.io traffic from the frontend container to the backend container.
+
+## Optional non-container run
 
 ### 1) Backend
 ```bash
@@ -66,7 +77,6 @@ cd backend
 npm install
 npm run dev
 ```
-Backend Docker target default: `http://backend:4000`
 
 ### 2) Frontend
 ```bash
@@ -74,9 +84,6 @@ cd frontend
 npm install
 npm run dev
 ```
-Frontend Docker origin default: `http://frontend:5173`
-
-Vite proxy is configured to route `/api` and Socket.io to backend.
 
 ## Suggested next phase (AI + Cyber)
 - Replace AI placeholders with Python FastAPI microservice + sentence-transformer

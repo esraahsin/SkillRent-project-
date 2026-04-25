@@ -19,14 +19,27 @@ const MIN_SESSION_DURATION_MS = 10 * 60 * 1000;
 const app = express();
 const server = http.createServer(app);
 
-const allowedOrigin = process.env.FRONTEND_ORIGIN || 'http://frontend:5173';
+const allowedOrigins = (process.env.FRONTEND_ORIGIN || 'http://localhost:5173,http://frontend:5173')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+function isAllowedOrigin(origin) {
+  return !origin || allowedOrigins.includes(origin);
+}
 const COOKIE_ENCRYPTION_KEY = crypto
   .createHash('sha256')
   .update(process.env.COOKIE_ENCRYPTION_SECRET || 'skillrent-cookie-encryption-secret')
   .digest();
 
 app.use(helmet());
-app.use(cors({ origin: allowedOrigin, credentials: true }));
+app.use(cors({
+  origin(origin, callback) {
+    if (isAllowedOrigin(origin)) return callback(null, true);
+    return callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 app.set('trust proxy', 1);
@@ -104,7 +117,13 @@ app.use('/api/auth', authLimiter);
 app.use('/api', csrfProtection);
 
 const io = new Server(server, {
-  cors: { origin: allowedOrigin, credentials: true }
+  cors: {
+    origin(origin, callback) {
+      if (isAllowedOrigin(origin)) return callback(null, true);
+      return callback(new Error('Not allowed by CORS'));
+    },
+    credentials: true
+  }
 });
 
 function sanitizeUser(user) {
@@ -644,6 +663,8 @@ io.on('connection', (socket) => {
 });
 
 const PORT = process.env.PORT || 4000;
-server.listen(PORT, () => {
-  console.log(`SkillRent backend running on http://localhost:${PORT}`);
+const HOST = process.env.HOST || '0.0.0.0';
+
+server.listen(PORT, HOST, () => {
+  console.log(`SkillRent backend running on ${HOST}:${PORT}`);
 });
