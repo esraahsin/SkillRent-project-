@@ -7,7 +7,7 @@ const rootDir = fileURLToPath(new URL('.', import.meta.url))
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, rootDir, 'VITE_')
-  const backendTarget = env.VITE_BACKEND_URL || 'http://backend:4000'
+  const backendTarget = env.VITE_BACKEND_URL || 'http://localhost:4000'
 
   return {
     plugins: [react(), tailwindcss()],
