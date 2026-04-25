@@ -8,8 +8,10 @@ const store = {
   messages: [],
   reviews: [],
   anomalyFlags: [],
+  notifications: [],
+  favorites: [], // { id, userId, providerId, createdAt }
   refreshTokens: new Map(),
-  registrationEvents: []
+  registrationEvents: [],
 };
 
 function createId(prefix) {

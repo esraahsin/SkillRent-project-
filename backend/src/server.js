@@ -10,10 +10,12 @@ const rateLimit = require('express-rate-limit');
 const { z } = require('zod');
 const { SKILL_TAXONOMY } = require('./constants/taxonomy');
 const { store, createId, nowIso } = require('./data/store');
+const { seed } = require('./data/seed');
 const { authRequired } = require('./middleware/auth');
 const { issueAccessToken, issueRefreshToken, verifyRefreshToken } = require('./utils/tokens');
 const { verifySkillDescription, semanticRecommendProviders } = require('./services/aiIntegration');
 const { inspectMessage, buildTrustScore } = require('./services/cyberIntegration');
+
 const MIN_SESSION_DURATION_MS = 10 * 60 * 1000;
 
 const app = express();
@@ -34,32 +36,30 @@ function corsOriginValidator(origin, callback) {
   if (isAllowedOrigin(origin)) return callback(null, true);
   return callback(new Error('Not allowed by CORS'));
 }
+
 const COOKIE_ENCRYPTION_KEY = crypto
   .createHash('sha256')
   .update(process.env.COOKIE_ENCRYPTION_SECRET || 'skillrent-cookie-encryption-secret')
   .digest();
 
 app.use(helmet());
-app.use(cors({
-  origin: corsOriginValidator,
-  credentials: true
-}));
+app.use(cors({ origin: corsOriginValidator, credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.set('trust proxy', 1);
 
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 300,
+  max: 600,
   standardHeaders: true,
-  legacyHeaders: false
+  legacyHeaders: false,
 });
 
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 25,
+  max: 40,
   standardHeaders: true,
-  legacyHeaders: false
+  legacyHeaders: false,
 });
 
 function setCsrfCookie(res) {
@@ -68,7 +68,7 @@ function setCsrfCookie(res) {
     httpOnly: false,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
-    maxAge: 7 * 24 * 60 * 60 * 1000
+    maxAge: 7 * 24 * 60 * 60 * 1000,
   });
   return csrfToken;
 }
@@ -121,10 +121,7 @@ app.use('/api/auth', authLimiter);
 app.use('/api', csrfProtection);
 
 const io = new Server(server, {
-  cors: {
-    origin: corsOriginValidator,
-    credentials: true
-  }
+  cors: { origin: corsOriginValidator, credentials: true },
 });
 
 function sanitizeUser(user) {
@@ -138,7 +135,7 @@ function setRefreshCookie(res, refreshToken) {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
-    maxAge: 7 * 24 * 60 * 60 * 1000
+    maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 }
 
@@ -150,8 +147,24 @@ function pushAnomaly(userId, ruleTriggered, severity, details) {
     severity,
     details,
     resolved: false,
-    createdAt: nowIso()
+    createdAt: nowIso(),
   });
+}
+
+function pushNotification(userId, type, title, body, meta = {}) {
+  const notif = {
+    id: createId('notif'),
+    userId,
+    type,
+    title,
+    body,
+    meta,
+    read: false,
+    createdAt: nowIso(),
+  };
+  store.notifications.push(notif);
+  io.to(userId).emit('notification:new', notif);
+  return notif;
 }
 
 function recalcTrust(userId) {
@@ -172,9 +185,10 @@ const registrationSchema = z.object({
   email: z.string().email(),
   password: z.string().min(6),
   city: z.string().min(2),
-  bio: z.string().min(10)
+  bio: z.string().min(10),
 });
 
+// ==================== Public ====================
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', service: 'SkillRent Web MVP API', timestamp: nowIso() });
 });
@@ -183,6 +197,24 @@ app.get('/api/taxonomy', (_req, res) => {
   res.json({ taxonomy: SKILL_TAXONOMY });
 });
 
+app.get('/api/stats/public', (_req, res) => {
+  const providersCount = new Set(store.skills.map((s) => s.userId)).size;
+  const completedCount = store.sessions.filter((s) => s.status === 'completed').length;
+  const avgRating = store.reviews.length
+    ? store.reviews.reduce((a, r) => a + r.rating, 0) / store.reviews.length
+    : 0;
+  res.json({
+    totalUsers: store.users.length,
+    totalProviders: providersCount,
+    totalSkills: store.skills.length,
+    totalSessions: store.sessions.length,
+    completedSessions: completedCount,
+    averageRating: Number(avgRating.toFixed(2)),
+    categories: SKILL_TAXONOMY.length,
+  });
+});
+
+// ==================== Auth ====================
 app.get('/api/auth/csrf', (_req, res) => {
   const csrfToken = setCsrfCookie(res);
   res.json({ csrfToken });
@@ -211,7 +243,7 @@ app.post('/api/auth/register', async (req, res) => {
     isEmailVerified: false,
     trustScore: { value: 45, band: 'orange' },
     availabilityStatus: 'offline',
-    createdAt: nowIso()
+    createdAt: nowIso(),
   };
 
   store.users.push(user);
@@ -259,7 +291,6 @@ app.post('/api/auth/login', async (req, res) => {
 app.post('/api/auth/refresh', (req, res) => {
   const encryptedToken = req.cookies.skillrent_refresh;
   let token;
-
   try {
     token = decryptToken(encryptedToken);
   } catch {
@@ -293,7 +324,7 @@ app.post('/api/auth/logout', (req, res) => {
       const storedTokenHash = findStoredTokenHash(tokenHash);
       if (storedTokenHash) store.refreshTokens.delete(storedTokenHash);
     } catch {
-      // ignore invalid cookie payload
+      // ignore
     }
   }
   res.clearCookie('skillrent_refresh');
@@ -301,6 +332,41 @@ app.post('/api/auth/logout', (req, res) => {
   res.json({ ok: true });
 });
 
+app.get('/api/auth/me', authRequired, (req, res) => {
+  res.json({ user: sanitizeUser(req.user) });
+});
+
+// ==================== User profile ====================
+app.patch('/api/users/me', authRequired, (req, res) => {
+  const { name, bio, city, avatarUrl } = req.body;
+  if (name) req.user.name = String(name).trim();
+  if (bio) req.user.bio = String(bio).trim();
+  if (city) req.user.city = String(city).trim();
+  if (typeof avatarUrl === 'string') req.user.avatarUrl = avatarUrl.trim() || null;
+  req.user.updatedAt = nowIso();
+  res.json({ user: sanitizeUser(req.user) });
+});
+
+app.post('/api/users/me/password', authRequired, async (req, res) => {
+  const { currentPassword, newPassword } = req.body;
+  if (!currentPassword || !newPassword || String(newPassword).length < 6) {
+    return res.status(400).json({ error: 'Invalid passwords' });
+  }
+  const ok = await bcrypt.compare(String(currentPassword), req.user.passwordHash);
+  if (!ok) return res.status(401).json({ error: 'Current password incorrect' });
+  req.user.passwordHash = await bcrypt.hash(String(newPassword), 10);
+  res.json({ ok: true });
+});
+
+app.post('/api/users/me/availability', authRequired, (req, res) => {
+  const { availabilityStatus } = req.body;
+  const activeProviderSession = store.sessions.find((s) => s.providerId === req.user.id && s.status === 'active');
+  if (activeProviderSession) return res.status(400).json({ error: 'Provider cannot change availability during active session' });
+  req.user.availabilityStatus = availabilityStatus;
+  res.json({ user: sanitizeUser(req.user) });
+});
+
+// ==================== Onboarding ====================
 app.post('/api/onboarding', authRequired, (req, res) => {
   const { mode, skills = [], avatarUrl } = req.body;
 
@@ -325,7 +391,7 @@ app.post('/api/onboarding', authRequired, (req, res) => {
         isVerified: ai.providerBadgeEligible,
         avgRating: 0,
         completedSessions: 0,
-        createdAt: nowIso()
+        createdAt: nowIso(),
       });
     });
   }
@@ -334,9 +400,59 @@ app.post('/api/onboarding', authRequired, (req, res) => {
   res.json({ user: sanitizeUser(req.user), skills: store.skills.filter((s) => s.userId === req.user.id) });
 });
 
+// ==================== Skills CRUD ====================
+app.get('/api/skills/me', authRequired, (req, res) => {
+  const skills = store.skills.filter((s) => s.userId === req.user.id);
+  res.json({ skills });
+});
+
+app.post('/api/skills', authRequired, (req, res) => {
+  const { category, subcategory, description, hourlyRate, responseTime, availabilityStatus } = req.body;
+  if (!category || !subcategory || !description) return res.status(400).json({ error: 'Missing fields' });
+  const ai = verifySkillDescription(description);
+  const skill = {
+    id: createId('skill'),
+    userId: req.user.id,
+    category,
+    subcategory,
+    description,
+    hourlyRate: Number(hourlyRate || 0),
+    responseTime: responseTime || 'within 15 min',
+    availabilityStatus: availabilityStatus || 'available_now',
+    aiConfidenceScore: ai.confidence,
+    aiSuggestedCategory: ai.suggestedCategory,
+    isVerified: ai.providerBadgeEligible,
+    avgRating: 0,
+    completedSessions: 0,
+    createdAt: nowIso(),
+  };
+  store.skills.push(skill);
+  recalcTrust(req.user.id);
+  res.status(201).json({ skill });
+});
+
+app.patch('/api/skills/:skillId', authRequired, (req, res) => {
+  const skill = store.skills.find((s) => s.id === req.params.skillId);
+  if (!skill) return res.status(404).json({ error: 'Skill not found' });
+  if (skill.userId !== req.user.id) return res.status(403).json({ error: 'Unauthorized' });
+  ['description', 'hourlyRate', 'responseTime', 'availabilityStatus', 'subcategory', 'category'].forEach((f) => {
+    if (req.body[f] !== undefined) skill[f] = f === 'hourlyRate' ? Number(req.body[f]) : req.body[f];
+  });
+  skill.updatedAt = nowIso();
+  res.json({ skill });
+});
+
+app.delete('/api/skills/:skillId', authRequired, (req, res) => {
+  const idx = store.skills.findIndex((s) => s.id === req.params.skillId);
+  if (idx < 0) return res.status(404).json({ error: 'Skill not found' });
+  if (store.skills[idx].userId !== req.user.id) return res.status(403).json({ error: 'Unauthorized' });
+  store.skills.splice(idx, 1);
+  res.json({ ok: true });
+});
+
+// ==================== Providers ====================
 app.get('/api/providers', (_req, res) => {
   const { category, subcategory, availability } = _req.query;
-
   const entries = store.skills.filter((skill) => {
     if (category && skill.category !== category) return false;
     if (subcategory && skill.subcategory !== subcategory) return false;
@@ -344,13 +460,38 @@ app.get('/api/providers', (_req, res) => {
     return true;
   }).map((skill) => {
     const user = store.users.find((u) => u.id === skill.userId);
-    return {
-      ...skill,
-      provider: user ? sanitizeUser(user) : null
-    };
+    return { ...skill, provider: user ? sanitizeUser(user) : null };
+  });
+  res.json({ providers: entries });
+});
+
+app.get('/api/providers/search', (req, res) => {
+  const { q = '', category, subcategory, availability, maxRate, minRate, sort = 'relevance' } = req.query;
+  const query = String(q).toLowerCase().trim();
+
+  let results = store.skills.map((skill) => {
+    const user = store.users.find((u) => u.id === skill.userId);
+    return { ...skill, provider: user ? sanitizeUser(user) : null };
   });
 
-  res.json({ providers: entries });
+  if (category) results = results.filter((s) => s.category === category);
+  if (subcategory) results = results.filter((s) => s.subcategory === subcategory);
+  if (availability) results = results.filter((s) => s.availabilityStatus === availability);
+  if (minRate) results = results.filter((s) => s.hourlyRate >= Number(minRate));
+  if (maxRate) results = results.filter((s) => s.hourlyRate <= Number(maxRate));
+
+  if (query) {
+    results = results.filter((s) => {
+      const hay = `${s.description} ${s.category} ${s.subcategory} ${s.provider?.name || ''} ${s.provider?.city || ''}`.toLowerCase();
+      return hay.includes(query);
+    });
+  }
+
+  if (sort === 'rate_asc') results.sort((a, b) => a.hourlyRate - b.hourlyRate);
+  else if (sort === 'rate_desc') results.sort((a, b) => b.hourlyRate - a.hourlyRate);
+  else if (sort === 'rating') results.sort((a, b) => (b.avgRating || 0) - (a.avgRating || 0));
+
+  res.json({ providers: results });
 });
 
 app.get('/api/providers/:providerId', (req, res) => {
@@ -359,19 +500,19 @@ app.get('/api/providers/:providerId', (req, res) => {
 
   const skills = store.skills.filter((s) => s.userId === provider.id);
   const sessionsCount = store.sessions.filter((s) => s.status === 'completed' && s.providerId === provider.id).length;
-  const providerReviews = store.reviews.filter((r) => r.revieweeId === provider.id);
+  const providerReviews = store.reviews.filter((r) => r.revieweeId === provider.id).map((r) => {
+    const reviewer = store.users.find((u) => u.id === r.reviewerId);
+    return { ...r, reviewer: reviewer ? { id: reviewer.id, name: reviewer.name, avatarUrl: reviewer.avatarUrl } : null };
+  });
   const averageRating = providerReviews.length ? providerReviews.reduce((acc, r) => acc + r.rating, 0) / providerReviews.length : 0;
 
   res.json({
     provider: sanitizeUser(provider),
-    profile: {
-      skills,
-      completedSessions: sessionsCount,
-      averageRating
-    }
+    profile: { skills, reviews: providerReviews, completedSessions: sessionsCount, averageRating },
   });
 });
 
+// ==================== Requests ====================
 app.post('/api/requests', authRequired, (req, res) => {
   const { title, description, category, subcategory, urgency, budget } = req.body;
 
@@ -386,25 +527,52 @@ app.post('/api/requests', authRequired, (req, res) => {
     budget: budget ? Number(budget) : null,
     status: 'open',
     applicants: [],
-    createdAt: nowIso()
+    createdAt: nowIso(),
   };
 
   const recommended = semanticRecommendProviders(description || `${title} ${category}`, store.skills);
   item.recommendedProviders = recommended;
 
   store.requests.push(item);
+
+  recommended.forEach((rec) => {
+    pushNotification(
+      rec.providerId,
+      'new_request',
+      'A new request matches your skills',
+      title,
+      { requestId: item.id }
+    );
+  });
+
   res.status(201).json({ request: item });
 });
 
 app.get('/api/requests', authRequired, (_req, res) => {
-  res.json({ requests: store.requests });
+  const requests = store.requests.map((r) => {
+    const seeker = store.users.find((u) => u.id === r.seekerId);
+    return {
+      ...r,
+      seeker: seeker ? { id: seeker.id, name: seeker.name, avatarUrl: seeker.avatarUrl, city: seeker.city } : null,
+    };
+  });
+  res.json({ requests });
 });
 
 app.post('/api/requests/:requestId/apply', authRequired, (req, res) => {
   const requestItem = store.requests.find((r) => r.id === req.params.requestId);
   if (!requestItem) return res.status(404).json({ error: 'Request not found' });
 
-  if (!requestItem.applicants.includes(req.user.id)) requestItem.applicants.push(req.user.id);
+  if (!requestItem.applicants.includes(req.user.id)) {
+    requestItem.applicants.push(req.user.id);
+    pushNotification(
+      requestItem.seekerId,
+      'application',
+      'New applicant on your request',
+      `${req.user.name} applied to "${requestItem.title}"`,
+      { requestId: requestItem.id, applicantId: req.user.id }
+    );
+  }
   res.json({ request: requestItem });
 });
 
@@ -433,7 +601,7 @@ app.post('/api/requests/:requestId/accept', authRequired, (req, res) => {
     agreedAmount,
     status: 'pending',
     protectedMode: false,
-    createdAt: nowIso()
+    createdAt: nowIso(),
   };
 
   store.sessions.push(session);
@@ -450,11 +618,24 @@ app.post('/api/requests/:requestId/accept', authRequired, (req, res) => {
   io.to(requestItem.seekerId).emit('session:created', session);
   io.to(providerId).emit('session:created', session);
 
+  pushNotification(requestItem.seekerId, 'session_created', 'A provider accepted your request', requestItem.title, { sessionId: session.id });
+
   res.status(201).json({ session });
 });
 
+// ==================== Sessions ====================
 app.get('/api/sessions/me', authRequired, (req, res) => {
-  const sessions = store.sessions.filter((s) => s.providerId === req.user.id || s.seekerId === req.user.id);
+  const sessions = store.sessions
+    .filter((s) => s.providerId === req.user.id || s.seekerId === req.user.id)
+    .map((s) => {
+      const provider = store.users.find((u) => u.id === s.providerId);
+      const seeker = store.users.find((u) => u.id === s.seekerId);
+      return {
+        ...s,
+        provider: provider ? { id: provider.id, name: provider.name, avatarUrl: provider.avatarUrl } : null,
+        seeker: seeker ? { id: seeker.id, name: seeker.name, avatarUrl: seeker.avatarUrl } : null,
+      };
+    });
   res.json({ sessions });
 });
 
@@ -468,6 +649,8 @@ app.post('/api/sessions/:sessionId/start', authRequired, (req, res) => {
   session.protectedMode = true;
 
   io.to(session.id).emit('session:started', session);
+  pushNotification(session.providerId, 'session_started', 'Session started', 'Your session is now live', { sessionId: session.id });
+  pushNotification(session.seekerId, 'session_started', 'Session started', 'Your session is now live', { sessionId: session.id });
   res.json({ session });
 });
 
@@ -493,6 +676,7 @@ app.post('/api/sessions/:sessionId/complete', authRequired, (req, res) => {
   recalcTrust(session.seekerId);
 
   io.to(session.id).emit('session:completed', session);
+  pushNotification(session.providerId, 'session_completed', 'Session completed', 'Please leave a mutual review', { sessionId: session.id });
   res.json({ session });
 });
 
@@ -527,7 +711,7 @@ app.post('/api/sessions/:sessionId/messages', authRequired, (req, res) => {
     content,
     isFlagged: analysis.flagged,
     flagReason: analysis.reason,
-    createdAt: nowIso()
+    createdAt: nowIso(),
   };
 
   if (analysis.flagged) {
@@ -537,9 +721,14 @@ app.post('/api/sessions/:sessionId/messages', authRequired, (req, res) => {
 
   store.messages.push(message);
   io.to(session.id).emit('message:new', message);
+
+  const otherUserId = session.providerId === req.user.id ? session.seekerId : session.providerId;
+  pushNotification(otherUserId, 'new_message', 'New message', String(content).slice(0, 80), { sessionId: session.id });
+
   res.status(201).json({ message });
 });
 
+// ==================== Reviews ====================
 app.post('/api/reviews', authRequired, (req, res) => {
   const { sessionId, revieweeId, rating, comment } = req.body;
   const session = store.sessions.find((s) => s.id === sessionId);
@@ -556,7 +745,7 @@ app.post('/api/reviews', authRequired, (req, res) => {
     rating: Number(rating),
     comment: String(comment || ''),
     isSuspicious: false,
-    createdAt: nowIso()
+    createdAt: nowIso(),
   };
 
   const lastTenMin = Date.now() - 10 * 60 * 1000;
@@ -570,12 +759,64 @@ app.post('/api/reviews', authRequired, (req, res) => {
   recalcTrust(review.revieweeId);
   recalcTrust(req.user.id);
 
+  pushNotification(revieweeId, 'new_review', 'You received a new review', `Rating: ${rating}/5`, { sessionId });
+
   res.status(201).json({ review });
 });
 
+// ==================== Favorites ====================
+app.get('/api/favorites', authRequired, (req, res) => {
+  const favorites = store.favorites.filter((f) => f.userId === req.user.id).map((f) => {
+    const provider = store.users.find((u) => u.id === f.providerId);
+    const skills = store.skills.filter((s) => s.userId === f.providerId);
+    return { ...f, provider: provider ? sanitizeUser(provider) : null, skills };
+  });
+  res.json({ favorites });
+});
+
+app.post('/api/favorites/:providerId', authRequired, (req, res) => {
+  const existing = store.favorites.find((f) => f.userId === req.user.id && f.providerId === req.params.providerId);
+  if (existing) return res.json({ favorite: existing });
+  const fav = { id: createId('fav'), userId: req.user.id, providerId: req.params.providerId, createdAt: nowIso() };
+  store.favorites.push(fav);
+  res.status(201).json({ favorite: fav });
+});
+
+app.delete('/api/favorites/:providerId', authRequired, (req, res) => {
+  const idx = store.favorites.findIndex((f) => f.userId === req.user.id && f.providerId === req.params.providerId);
+  if (idx < 0) return res.status(404).json({ error: 'Favorite not found' });
+  store.favorites.splice(idx, 1);
+  res.json({ ok: true });
+});
+
+// ==================== Notifications ====================
+app.get('/api/notifications', authRequired, (req, res) => {
+  const notifications = store.notifications
+    .filter((n) => n.userId === req.user.id)
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    .slice(0, 50);
+  res.json({ notifications });
+});
+
+app.post('/api/notifications/:id/read', authRequired, (req, res) => {
+  const n = store.notifications.find((x) => x.id === req.params.id && x.userId === req.user.id);
+  if (!n) return res.status(404).json({ error: 'Not found' });
+  n.read = true;
+  res.json({ notification: n });
+});
+
+app.post('/api/notifications/read-all', authRequired, (req, res) => {
+  store.notifications.forEach((n) => {
+    if (n.userId === req.user.id) n.read = true;
+  });
+  res.json({ ok: true });
+});
+
+// ==================== Dashboards ====================
 app.get('/api/dashboard/provider', authRequired, (req, res) => {
   const sessions = store.sessions.filter((s) => s.providerId === req.user.id);
   const completed = sessions.filter((s) => s.status === 'completed').length;
+  const active = sessions.filter((s) => s.status === 'active').length;
   const pending = sessions.filter((s) => s.status === 'pending').length;
   const earnings = sessions
     .filter((s) => s.status === 'completed')
@@ -586,10 +827,12 @@ app.get('/api/dashboard/provider', authRequired, (req, res) => {
   res.json({
     totalEarnings: earnings,
     sessionsCompleted: completed,
+    activeSessions: active,
     averageRating: avgRating,
     pendingRequests: pending,
     currentAvailability: req.user.availabilityStatus,
-    trustScore: req.user.trustScore
+    trustScore: req.user.trustScore,
+    reviewsCount: ratingRows.length,
   });
 });
 
@@ -598,12 +841,14 @@ app.get('/api/dashboard/seeker', authRequired, (req, res) => {
   const active = sessions.filter((s) => s.status === 'active');
   const past = sessions.filter((s) => s.status === 'completed');
   const spendingSummary = past.reduce((acc, s) => acc + Number(s.agreedAmount || 0), 0);
+  const favoriteProviders = store.favorites.filter((f) => f.userId === req.user.id).length;
 
   res.json({
     activeSessions: active,
     pastSessions: past,
     spendingSummary,
-    favoriteProviders: []
+    favoriteProviders,
+    totalRequests: store.requests.filter((r) => r.seekerId === req.user.id).length,
   });
 });
 
@@ -611,16 +856,7 @@ app.get('/api/admin/anomaly-flags', authRequired, (req, res) => {
   res.json({ flags: store.anomalyFlags });
 });
 
-app.post('/api/users/me/availability', authRequired, (req, res) => {
-  const { availabilityStatus } = req.body;
-
-  const activeProviderSession = store.sessions.find((s) => s.providerId === req.user.id && s.status === 'active');
-  if (activeProviderSession) return res.status(400).json({ error: 'Provider cannot change availability during active session' });
-
-  req.user.availabilityStatus = availabilityStatus;
-  res.json({ user: sanitizeUser(req.user) });
-});
-
+// ==================== Socket.io ====================
 io.on('connection', (socket) => {
   socket.on('auth:identify', ({ userId }) => {
     if (!userId) return;
@@ -655,7 +891,7 @@ io.on('connection', (socket) => {
       content,
       isFlagged: analysis.flagged,
       flagReason: analysis.reason,
-      createdAt: nowIso()
+      createdAt: nowIso(),
     };
 
     store.messages.push(message);
@@ -663,9 +899,17 @@ io.on('connection', (socket) => {
   });
 });
 
+// ==================== Bootstrap ====================
 const PORT = process.env.PORT || 4000;
 const HOST = process.env.HOST || '0.0.0.0';
 
-server.listen(PORT, HOST, () => {
-  console.log(`SkillRent backend running on ${HOST}:${PORT}`);
-});
+(async () => {
+  try {
+    await seed();
+  } catch (e) {
+    console.error('[seed] failed:', e.message);
+  }
+  server.listen(PORT, HOST, () => {
+    console.log(`SkillRent backend running on ${HOST}:${PORT}`);
+  });
+})();
