@@ -18,3 +18,11 @@ yarn-error.log*
 
 # misc
 .DS_Store
+# ML models
+ai_service/fine_tuned_model/
+*.bin
+*.pt
+*.safetensors
+
+# data (optional but recommended)
+ai_service/data/*.json
