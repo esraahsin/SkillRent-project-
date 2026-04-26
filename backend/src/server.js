@@ -13,9 +13,8 @@ const { store, createId, nowIso } = require('./data/store');
 const { seed } = require('./data/seed');
 const { authRequired } = require('./middleware/auth');
 const { issueAccessToken, issueRefreshToken, verifyRefreshToken } = require('./utils/tokens');
-const { verifySkillDescription, semanticRecommendProviders } = require('./services/aiIntegration');
+const { verifySkillDescription, semanticRecommendProviders, categorizeRequest } = require('./services/aiIntegration');
 const { inspectMessage, buildTrustScore } = require('./services/cyberIntegration');
-
 const MIN_SESSION_DURATION_MS = 10 * 60 * 1000;
 
 const app = express();
@@ -381,7 +380,7 @@ app.post('/api/users/me/availability', authRequired, (req, res) => {
 });
 
 // ==================== Onboarding ====================
-app.post('/api/onboarding', authRequired, (req, res) => {
+app.post('/api/onboarding', authRequired, async (req, res) => {
   const { mode, skills = [], avatarUrl } = req.body;
 
   req.user.role = mode || 'both';
@@ -389,8 +388,13 @@ app.post('/api/onboarding', authRequired, (req, res) => {
   req.user.onboardingDone = true;
 
   if (req.user.role === 'provider' || req.user.role === 'both') {
-    skills.forEach((skillInput) => {
-      const ai = verifySkillDescription(skillInput.description);
+    for (const skillInput of skills) {
+      const ai = await verifySkillDescription(
+        skillInput.description,
+        skillInput.category,
+        skillInput.subcategory
+      );
+
       store.skills.push({
         id: createId('skill'),
         userId: req.user.id,
@@ -407,7 +411,7 @@ app.post('/api/onboarding', authRequired, (req, res) => {
         completedSessions: 0,
         createdAt: nowIso(),
       });
-    });
+    }
   }
 
   recalcTrust(req.user.id);
@@ -420,10 +424,10 @@ app.get('/api/skills/me', authRequired, (req, res) => {
   res.json({ skills });
 });
 
-app.post('/api/skills', authRequired, (req, res) => {
+app.post('/api/skills', authRequired, async(req, res) => {
   const { category, subcategory, description, hourlyRate, responseTime, availabilityStatus } = req.body;
   if (!category || !subcategory || !description) return res.status(400).json({ error: 'Missing fields' });
-  const ai = verifySkillDescription(description);
+const ai = await verifySkillDescription(description, category, subcategory);
   const skill = {
     id: createId('skill'),
     userId: req.user.id,
@@ -531,9 +535,22 @@ app.get('/api/providers/:providerId', (req, res) => {
 });
 
 // ==================== Requests ====================
-app.post('/api/requests', authRequired, (req, res) => {
-  const { title, description, category, subcategory, urgency, budget } = req.body;
 
+app.post('/api/requests', authRequired, async (req, res) => {
+  let { title, description, category, subcategory, urgency, budget } = req.body;
+ 
+  // Auto-fill category/subcategory when the client didn't send them
+  if (!category || !subcategory) {
+    try {
+      const ai = await categorizeRequest(title || '', description || '');
+      category    = category    || ai.category;
+      subcategory = subcategory || ai.subcategory;
+    } catch {
+      category    = category    || 'Tech & Development';
+      subcategory = subcategory || 'Web Development';
+    }
+  }
+ 
   const item = {
     id: createId('req'),
     seekerId: req.user.id,
@@ -547,12 +564,15 @@ app.post('/api/requests', authRequired, (req, res) => {
     applicants: [],
     createdAt: nowIso(),
   };
-
-  const recommended = semanticRecommendProviders(description || `${title} ${category}`, store.skills);
+ 
+  const recommended = await semanticRecommendProviders(
+    description || `${title} ${category}`,
+    store.skills
+  );
   item.recommendedProviders = recommended;
-
+ 
   store.requests.push(item);
-
+ 
   recommended.forEach((rec) => {
     pushNotification(
       rec.providerId,
@@ -562,7 +582,7 @@ app.post('/api/requests', authRequired, (req, res) => {
       { requestId: item.id }
     );
   });
-
+ 
   res.status(201).json({ request: item });
 });
 

@@ -1,0 +1,1962 @@
+[
+  {
+    "sentence1": "I build React and Next.js web apps with Tailwind, deployed to Vercel or AWS.",
+    "sentence2": "Full-stack developer specializing in Node.js REST APIs and PostgreSQL databases.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "I build React and Next.js web apps with Tailwind, deployed to Vercel or AWS.",
+    "sentence2": "Frontend engineer with 5 years building responsive SPAs using Vue and TypeScript.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "I build React and Next.js web apps with Tailwind, deployed to Vercel or AWS.",
+    "sentence2": "I create fast, SEO-optimized websites with React 18, server components, and edge caching.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "I build React and Next.js web apps with Tailwind, deployed to Vercel or AWS.",
+    "sentence2": "Backend developer skilled in Express microservices, Docker, and CI/CD pipelines.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "I build React and Next.js web apps with Tailwind, deployed to Vercel or AWS.",
+    "sentence2": "I debug JavaScript errors, fix auth flows, and refactor legacy jQuery codebases.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "I build React and Next.js web apps with Tailwind, deployed to Vercel or AWS.",
+    "sentence2": "E-commerce specialist building Shopify stores and custom headless storefronts.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "I build React and Next.js web apps with Tailwind, deployed to Vercel or AWS.",
+    "sentence2": "I implement WebSockets, real-time dashboards, and GraphQL APIs in Node.js.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "Full-stack developer specializing in Node.js REST APIs and PostgreSQL databases.",
+    "sentence2": "Frontend engineer with 5 years building responsive SPAs using Vue and TypeScript.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "Full-stack developer specializing in Node.js REST APIs and PostgreSQL databases.",
+    "sentence2": "I create fast, SEO-optimized websites with React 18, server components, and edge caching.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "Full-stack developer specializing in Node.js REST APIs and PostgreSQL databases.",
+    "sentence2": "Backend developer skilled in Express microservices, Docker, and CI/CD pipelines.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "Full-stack developer specializing in Node.js REST APIs and PostgreSQL databases.",
+    "sentence2": "I debug JavaScript errors, fix auth flows, and refactor legacy jQuery codebases.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "Full-stack developer specializing in Node.js REST APIs and PostgreSQL databases.",
+    "sentence2": "E-commerce specialist building Shopify stores and custom headless storefronts.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "Full-stack developer specializing in Node.js REST APIs and PostgreSQL databases.",
+    "sentence2": "I implement WebSockets, real-time dashboards, and GraphQL APIs in Node.js.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "Frontend engineer with 5 years building responsive SPAs using Vue and TypeScript.",
+    "sentence2": "I create fast, SEO-optimized websites with React 18, server components, and edge caching.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "Frontend engineer with 5 years building responsive SPAs using Vue and TypeScript.",
+    "sentence2": "Backend developer skilled in Express microservices, Docker, and CI/CD pipelines.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "Frontend engineer with 5 years building responsive SPAs using Vue and TypeScript.",
+    "sentence2": "I debug JavaScript errors, fix auth flows, and refactor legacy jQuery codebases.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "Frontend engineer with 5 years building responsive SPAs using Vue and TypeScript.",
+    "sentence2": "E-commerce specialist building Shopify stores and custom headless storefronts.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "Frontend engineer with 5 years building responsive SPAs using Vue and TypeScript.",
+    "sentence2": "I implement WebSockets, real-time dashboards, and GraphQL APIs in Node.js.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "I create fast, SEO-optimized websites with React 18, server components, and edge caching.",
+    "sentence2": "Backend developer skilled in Express microservices, Docker, and CI/CD pipelines.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "I create fast, SEO-optimized websites with React 18, server components, and edge caching.",
+    "sentence2": "I debug JavaScript errors, fix auth flows, and refactor legacy jQuery codebases.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "I create fast, SEO-optimized websites with React 18, server components, and edge caching.",
+    "sentence2": "E-commerce specialist building Shopify stores and custom headless storefronts.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "I create fast, SEO-optimized websites with React 18, server components, and edge caching.",
+    "sentence2": "I implement WebSockets, real-time dashboards, and GraphQL APIs in Node.js.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "Backend developer skilled in Express microservices, Docker, and CI/CD pipelines.",
+    "sentence2": "I debug JavaScript errors, fix auth flows, and refactor legacy jQuery codebases.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "Backend developer skilled in Express microservices, Docker, and CI/CD pipelines.",
+    "sentence2": "E-commerce specialist building Shopify stores and custom headless storefronts.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "Backend developer skilled in Express microservices, Docker, and CI/CD pipelines.",
+    "sentence2": "I implement WebSockets, real-time dashboards, and GraphQL APIs in Node.js.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "I debug JavaScript errors, fix auth flows, and refactor legacy jQuery codebases.",
+    "sentence2": "E-commerce specialist building Shopify stores and custom headless storefronts.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "I debug JavaScript errors, fix auth flows, and refactor legacy jQuery codebases.",
+    "sentence2": "I implement WebSockets, real-time dashboards, and GraphQL APIs in Node.js.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "E-commerce specialist building Shopify stores and custom headless storefronts.",
+    "sentence2": "I implement WebSockets, real-time dashboards, and GraphQL APIs in Node.js.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Web Development"
+  },
+  {
+    "sentence1": "React Native developer shipping iOS and Android apps from one codebase.",
+    "sentence2": "Flutter engineer building smooth cross-platform mobile experiences in Dart.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Mobile Development"
+  },
+  {
+    "sentence1": "React Native developer shipping iOS and Android apps from one codebase.",
+    "sentence2": "iOS developer with Swift expertise, App Store submissions, and in-app purchases.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Mobile Development"
+  },
+  {
+    "sentence1": "React Native developer shipping iOS and Android apps from one codebase.",
+    "sentence2": "Android Kotlin developer with deep knowledge of Jetpack Compose and navigation.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Mobile Development"
+  },
+  {
+    "sentence1": "React Native developer shipping iOS and Android apps from one codebase.",
+    "sentence2": "I build offline-first mobile apps with SQLite, push notifications, and deep links.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Mobile Development"
+  },
+  {
+    "sentence1": "React Native developer shipping iOS and Android apps from one codebase.",
+    "sentence2": "Cross-platform mobile specialist integrating REST APIs, analytics, and Firebase.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Mobile Development"
+  },
+  {
+    "sentence1": "Flutter engineer building smooth cross-platform mobile experiences in Dart.",
+    "sentence2": "iOS developer with Swift expertise, App Store submissions, and in-app purchases.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Mobile Development"
+  },
+  {
+    "sentence1": "Flutter engineer building smooth cross-platform mobile experiences in Dart.",
+    "sentence2": "Android Kotlin developer with deep knowledge of Jetpack Compose and navigation.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Mobile Development"
+  },
+  {
+    "sentence1": "Flutter engineer building smooth cross-platform mobile experiences in Dart.",
+    "sentence2": "I build offline-first mobile apps with SQLite, push notifications, and deep links.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Mobile Development"
+  },
+  {
+    "sentence1": "Flutter engineer building smooth cross-platform mobile experiences in Dart.",
+    "sentence2": "Cross-platform mobile specialist integrating REST APIs, analytics, and Firebase.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Mobile Development"
+  },
+  {
+    "sentence1": "iOS developer with Swift expertise, App Store submissions, and in-app purchases.",
+    "sentence2": "Android Kotlin developer with deep knowledge of Jetpack Compose and navigation.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Mobile Development"
+  },
+  {
+    "sentence1": "iOS developer with Swift expertise, App Store submissions, and in-app purchases.",
+    "sentence2": "I build offline-first mobile apps with SQLite, push notifications, and deep links.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Mobile Development"
+  },
+  {
+    "sentence1": "iOS developer with Swift expertise, App Store submissions, and in-app purchases.",
+    "sentence2": "Cross-platform mobile specialist integrating REST APIs, analytics, and Firebase.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Mobile Development"
+  },
+  {
+    "sentence1": "Android Kotlin developer with deep knowledge of Jetpack Compose and navigation.",
+    "sentence2": "I build offline-first mobile apps with SQLite, push notifications, and deep links.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Mobile Development"
+  },
+  {
+    "sentence1": "Android Kotlin developer with deep knowledge of Jetpack Compose and navigation.",
+    "sentence2": "Cross-platform mobile specialist integrating REST APIs, analytics, and Firebase.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Mobile Development"
+  },
+  {
+    "sentence1": "I build offline-first mobile apps with SQLite, push notifications, and deep links.",
+    "sentence2": "Cross-platform mobile specialist integrating REST APIs, analytics, and Firebase.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Mobile Development"
+  },
+  {
+    "sentence1": "Python data analyst building pandas pipelines and interactive Plotly dashboards.",
+    "sentence2": "I turn your messy CSV files into clean SQL databases and Power BI reports.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Data Analysis"
+  },
+  {
+    "sentence1": "Python data analyst building pandas pipelines and interactive Plotly dashboards.",
+    "sentence2": "Data scientist with expertise in scikit-learn, feature engineering, and A/B testing.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Data Analysis"
+  },
+  {
+    "sentence1": "Python data analyst building pandas pipelines and interactive Plotly dashboards.",
+    "sentence2": "Business intelligence developer creating KPI dashboards in Tableau and Looker.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Data Analysis"
+  },
+  {
+    "sentence1": "Python data analyst building pandas pipelines and interactive Plotly dashboards.",
+    "sentence2": "I perform statistical analysis, hypothesis testing, and regression modeling in R.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Data Analysis"
+  },
+  {
+    "sentence1": "Python data analyst building pandas pipelines and interactive Plotly dashboards.",
+    "sentence2": "Machine learning engineer fine-tuning models for classification and forecasting.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Data Analysis"
+  },
+  {
+    "sentence1": "I turn your messy CSV files into clean SQL databases and Power BI reports.",
+    "sentence2": "Data scientist with expertise in scikit-learn, feature engineering, and A/B testing.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Data Analysis"
+  },
+  {
+    "sentence1": "I turn your messy CSV files into clean SQL databases and Power BI reports.",
+    "sentence2": "Business intelligence developer creating KPI dashboards in Tableau and Looker.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Data Analysis"
+  },
+  {
+    "sentence1": "I turn your messy CSV files into clean SQL databases and Power BI reports.",
+    "sentence2": "I perform statistical analysis, hypothesis testing, and regression modeling in R.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Data Analysis"
+  },
+  {
+    "sentence1": "I turn your messy CSV files into clean SQL databases and Power BI reports.",
+    "sentence2": "Machine learning engineer fine-tuning models for classification and forecasting.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Data Analysis"
+  },
+  {
+    "sentence1": "Data scientist with expertise in scikit-learn, feature engineering, and A/B testing.",
+    "sentence2": "Business intelligence developer creating KPI dashboards in Tableau and Looker.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Data Analysis"
+  },
+  {
+    "sentence1": "Data scientist with expertise in scikit-learn, feature engineering, and A/B testing.",
+    "sentence2": "I perform statistical analysis, hypothesis testing, and regression modeling in R.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Data Analysis"
+  },
+  {
+    "sentence1": "Data scientist with expertise in scikit-learn, feature engineering, and A/B testing.",
+    "sentence2": "Machine learning engineer fine-tuning models for classification and forecasting.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Data Analysis"
+  },
+  {
+    "sentence1": "Business intelligence developer creating KPI dashboards in Tableau and Looker.",
+    "sentence2": "I perform statistical analysis, hypothesis testing, and regression modeling in R.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Data Analysis"
+  },
+  {
+    "sentence1": "Business intelligence developer creating KPI dashboards in Tableau and Looker.",
+    "sentence2": "Machine learning engineer fine-tuning models for classification and forecasting.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Data Analysis"
+  },
+  {
+    "sentence1": "I perform statistical analysis, hypothesis testing, and regression modeling in R.",
+    "sentence2": "Machine learning engineer fine-tuning models for classification and forecasting.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Data Analysis"
+  },
+  {
+    "sentence1": "Excel power user building complex financial models with VBA macros and pivot tables.",
+    "sentence2": "I automate Google Sheets workflows, create VLOOKUP formulas, and build dashboards.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Excel & Spreadsheets"
+  },
+  {
+    "sentence1": "Excel power user building complex financial models with VBA macros and pivot tables.",
+    "sentence2": "Spreadsheet consultant who turns manual tracking into automated reporting systems.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Excel & Spreadsheets"
+  },
+  {
+    "sentence1": "Excel power user building complex financial models with VBA macros and pivot tables.",
+    "sentence2": "I build Excel templates for project management, budgeting, and inventory tracking.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Excel & Spreadsheets"
+  },
+  {
+    "sentence1": "I automate Google Sheets workflows, create VLOOKUP formulas, and build dashboards.",
+    "sentence2": "Spreadsheet consultant who turns manual tracking into automated reporting systems.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Excel & Spreadsheets"
+  },
+  {
+    "sentence1": "I automate Google Sheets workflows, create VLOOKUP formulas, and build dashboards.",
+    "sentence2": "I build Excel templates for project management, budgeting, and inventory tracking.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Excel & Spreadsheets"
+  },
+  {
+    "sentence1": "Spreadsheet consultant who turns manual tracking into automated reporting systems.",
+    "sentence2": "I build Excel templates for project management, budgeting, and inventory tracking.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Excel & Spreadsheets"
+  },
+  {
+    "sentence1": "OSCP-certified penetration tester auditing web apps for OWASP Top 10 vulnerabilities.",
+    "sentence2": "Security engineer performing network scans, firewall audits, and threat modeling.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Cybersecurity"
+  },
+  {
+    "sentence1": "OSCP-certified penetration tester auditing web apps for OWASP Top 10 vulnerabilities.",
+    "sentence2": "I conduct secure code reviews in Node.js, Python, and Java to find injection flaws.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Cybersecurity"
+  },
+  {
+    "sentence1": "OSCP-certified penetration tester auditing web apps for OWASP Top 10 vulnerabilities.",
+    "sentence2": "Web application pentester specializing in auth bypass, XSS, and IDOR vulnerabilities.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Cybersecurity"
+  },
+  {
+    "sentence1": "OSCP-certified penetration tester auditing web apps for OWASP Top 10 vulnerabilities.",
+    "sentence2": "Cloud security consultant reviewing AWS IAM policies and S3 bucket configurations.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Cybersecurity"
+  },
+  {
+    "sentence1": "Security engineer performing network scans, firewall audits, and threat modeling.",
+    "sentence2": "I conduct secure code reviews in Node.js, Python, and Java to find injection flaws.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Cybersecurity"
+  },
+  {
+    "sentence1": "Security engineer performing network scans, firewall audits, and threat modeling.",
+    "sentence2": "Web application pentester specializing in auth bypass, XSS, and IDOR vulnerabilities.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Cybersecurity"
+  },
+  {
+    "sentence1": "Security engineer performing network scans, firewall audits, and threat modeling.",
+    "sentence2": "Cloud security consultant reviewing AWS IAM policies and S3 bucket configurations.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Cybersecurity"
+  },
+  {
+    "sentence1": "I conduct secure code reviews in Node.js, Python, and Java to find injection flaws.",
+    "sentence2": "Web application pentester specializing in auth bypass, XSS, and IDOR vulnerabilities.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Cybersecurity"
+  },
+  {
+    "sentence1": "I conduct secure code reviews in Node.js, Python, and Java to find injection flaws.",
+    "sentence2": "Cloud security consultant reviewing AWS IAM policies and S3 bucket configurations.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Cybersecurity"
+  },
+  {
+    "sentence1": "Web application pentester specializing in auth bypass, XSS, and IDOR vulnerabilities.",
+    "sentence2": "Cloud security consultant reviewing AWS IAM policies and S3 bucket configurations.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Cybersecurity"
+  },
+  {
+    "sentence1": "Premiere Pro editor cutting YouTube videos, YouTube Shorts, and corporate promos.",
+    "sentence2": "DaVinci Resolve colorist and video editor for indie films and music videos.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Video Editing"
+  },
+  {
+    "sentence1": "Premiere Pro editor cutting YouTube videos, YouTube Shorts, and corporate promos.",
+    "sentence2": "I create Instagram Reels and TikTok content with fast-paced editing and captions.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Video Editing"
+  },
+  {
+    "sentence1": "Premiere Pro editor cutting YouTube videos, YouTube Shorts, and corporate promos.",
+    "sentence2": "After Effects animator adding motion graphics, lower thirds, and kinetic text.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Video Editing"
+  },
+  {
+    "sentence1": "Premiere Pro editor cutting YouTube videos, YouTube Shorts, and corporate promos.",
+    "sentence2": "Podcast video editor syncing multi-cam footage and adding intro/outro sequences.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Video Editing"
+  },
+  {
+    "sentence1": "DaVinci Resolve colorist and video editor for indie films and music videos.",
+    "sentence2": "I create Instagram Reels and TikTok content with fast-paced editing and captions.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Video Editing"
+  },
+  {
+    "sentence1": "DaVinci Resolve colorist and video editor for indie films and music videos.",
+    "sentence2": "After Effects animator adding motion graphics, lower thirds, and kinetic text.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Video Editing"
+  },
+  {
+    "sentence1": "DaVinci Resolve colorist and video editor for indie films and music videos.",
+    "sentence2": "Podcast video editor syncing multi-cam footage and adding intro/outro sequences.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Video Editing"
+  },
+  {
+    "sentence1": "I create Instagram Reels and TikTok content with fast-paced editing and captions.",
+    "sentence2": "After Effects animator adding motion graphics, lower thirds, and kinetic text.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Video Editing"
+  },
+  {
+    "sentence1": "I create Instagram Reels and TikTok content with fast-paced editing and captions.",
+    "sentence2": "Podcast video editor syncing multi-cam footage and adding intro/outro sequences.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Video Editing"
+  },
+  {
+    "sentence1": "After Effects animator adding motion graphics, lower thirds, and kinetic text.",
+    "sentence2": "Podcast video editor syncing multi-cam footage and adding intro/outro sequences.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Video Editing"
+  },
+  {
+    "sentence1": "Photoshop retoucher for portrait cleanups, skin smoothing, and background removal.",
+    "sentence2": "Lightroom editor delivering consistent color-graded photo packages for weddings.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Photo Editing"
+  },
+  {
+    "sentence1": "Photoshop retoucher for portrait cleanups, skin smoothing, and background removal.",
+    "sentence2": "Product photographer and editor creating clean white-background shots for Amazon.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Photo Editing"
+  },
+  {
+    "sentence1": "Photoshop retoucher for portrait cleanups, skin smoothing, and background removal.",
+    "sentence2": "I do advanced compositing, sky replacement, and object removal in Photoshop.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Photo Editing"
+  },
+  {
+    "sentence1": "Lightroom editor delivering consistent color-graded photo packages for weddings.",
+    "sentence2": "Product photographer and editor creating clean white-background shots for Amazon.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Photo Editing"
+  },
+  {
+    "sentence1": "Lightroom editor delivering consistent color-graded photo packages for weddings.",
+    "sentence2": "I do advanced compositing, sky replacement, and object removal in Photoshop.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Photo Editing"
+  },
+  {
+    "sentence1": "Product photographer and editor creating clean white-background shots for Amazon.",
+    "sentence2": "I do advanced compositing, sky replacement, and object removal in Photoshop.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "Photo Editing"
+  },
+  {
+    "sentence1": "Blender artist creating 3D product visualizations and architectural renders.",
+    "sentence2": "Cinema 4D animator producing 3D logo animations and motion graphics.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "3D Modeling"
+  },
+  {
+    "sentence1": "Blender artist creating 3D product visualizations and architectural renders.",
+    "sentence2": "I model characters, environments, and props for games using Maya and ZBrush.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "3D Modeling"
+  },
+  {
+    "sentence1": "Blender artist creating 3D product visualizations and architectural renders.",
+    "sentence2": "Architectural visualization specialist rendering photorealistic interior scenes.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "3D Modeling"
+  },
+  {
+    "sentence1": "Cinema 4D animator producing 3D logo animations and motion graphics.",
+    "sentence2": "I model characters, environments, and props for games using Maya and ZBrush.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "3D Modeling"
+  },
+  {
+    "sentence1": "Cinema 4D animator producing 3D logo animations and motion graphics.",
+    "sentence2": "Architectural visualization specialist rendering photorealistic interior scenes.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "3D Modeling"
+  },
+  {
+    "sentence1": "I model characters, environments, and props for games using Maya and ZBrush.",
+    "sentence2": "Architectural visualization specialist rendering photorealistic interior scenes.",
+    "label": 1.0,
+    "category": "Tech & Development",
+    "subcategory": "3D Modeling"
+  },
+  {
+    "sentence1": "UX designer creating user flows, wireframes, and high-fidelity Figma prototypes.",
+    "sentence2": "I conduct user research, usability tests, and design accessible component libraries.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "UI/UX Design"
+  },
+  {
+    "sentence1": "UX designer creating user flows, wireframes, and high-fidelity Figma prototypes.",
+    "sentence2": "Product designer translating briefs into polished interfaces with design systems.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "UI/UX Design"
+  },
+  {
+    "sentence1": "UX designer creating user flows, wireframes, and high-fidelity Figma prototypes.",
+    "sentence2": "Mobile UI specialist designing iOS and Android screens following platform guidelines.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "UI/UX Design"
+  },
+  {
+    "sentence1": "UX designer creating user flows, wireframes, and high-fidelity Figma prototypes.",
+    "sentence2": "I audit existing products for UX issues, map pain points, and propose redesigns.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "UI/UX Design"
+  },
+  {
+    "sentence1": "I conduct user research, usability tests, and design accessible component libraries.",
+    "sentence2": "Product designer translating briefs into polished interfaces with design systems.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "UI/UX Design"
+  },
+  {
+    "sentence1": "I conduct user research, usability tests, and design accessible component libraries.",
+    "sentence2": "Mobile UI specialist designing iOS and Android screens following platform guidelines.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "UI/UX Design"
+  },
+  {
+    "sentence1": "I conduct user research, usability tests, and design accessible component libraries.",
+    "sentence2": "I audit existing products for UX issues, map pain points, and propose redesigns.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "UI/UX Design"
+  },
+  {
+    "sentence1": "Product designer translating briefs into polished interfaces with design systems.",
+    "sentence2": "Mobile UI specialist designing iOS and Android screens following platform guidelines.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "UI/UX Design"
+  },
+  {
+    "sentence1": "Product designer translating briefs into polished interfaces with design systems.",
+    "sentence2": "I audit existing products for UX issues, map pain points, and propose redesigns.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "UI/UX Design"
+  },
+  {
+    "sentence1": "Mobile UI specialist designing iOS and Android screens following platform guidelines.",
+    "sentence2": "I audit existing products for UX issues, map pain points, and propose redesigns.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "UI/UX Design"
+  },
+  {
+    "sentence1": "Graphic designer creating logos, posters, flyers, and social media templates.",
+    "sentence2": "Illustrator and brand designer specializing in vector art and typographic logos.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Graphic Design"
+  },
+  {
+    "sentence1": "Graphic designer creating logos, posters, flyers, and social media templates.",
+    "sentence2": "I design print-ready materials: business cards, brochures, and billboard ads.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Graphic Design"
+  },
+  {
+    "sentence1": "Graphic designer creating logos, posters, flyers, and social media templates.",
+    "sentence2": "Social media graphic designer creating viral-ready thumbnails and carousel posts.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Graphic Design"
+  },
+  {
+    "sentence1": "Illustrator and brand designer specializing in vector art and typographic logos.",
+    "sentence2": "I design print-ready materials: business cards, brochures, and billboard ads.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Graphic Design"
+  },
+  {
+    "sentence1": "Illustrator and brand designer specializing in vector art and typographic logos.",
+    "sentence2": "Social media graphic designer creating viral-ready thumbnails and carousel posts.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Graphic Design"
+  },
+  {
+    "sentence1": "I design print-ready materials: business cards, brochures, and billboard ads.",
+    "sentence2": "Social media graphic designer creating viral-ready thumbnails and carousel posts.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Graphic Design"
+  },
+  {
+    "sentence1": "Brand strategist developing full visual identities: logo, palette, typography, guidelines.",
+    "sentence2": "I rebrand companies with comprehensive brand books, stationery, and digital assets.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Brand Identity"
+  },
+  {
+    "sentence1": "Brand strategist developing full visual identities: logo, palette, typography, guidelines.",
+    "sentence2": "Corporate identity designer creating cohesive systems for startups and enterprises.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Brand Identity"
+  },
+  {
+    "sentence1": "Brand strategist developing full visual identities: logo, palette, typography, guidelines.",
+    "sentence2": "Brand consultant conducting competitor audits and positioning before designing.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Brand Identity"
+  },
+  {
+    "sentence1": "I rebrand companies with comprehensive brand books, stationery, and digital assets.",
+    "sentence2": "Corporate identity designer creating cohesive systems for startups and enterprises.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Brand Identity"
+  },
+  {
+    "sentence1": "I rebrand companies with comprehensive brand books, stationery, and digital assets.",
+    "sentence2": "Brand consultant conducting competitor audits and positioning before designing.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Brand Identity"
+  },
+  {
+    "sentence1": "Corporate identity designer creating cohesive systems for startups and enterprises.",
+    "sentence2": "Brand consultant conducting competitor audits and positioning before designing.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Brand Identity"
+  },
+  {
+    "sentence1": "After Effects motion designer creating explainer videos, logo stings, and title sequences.",
+    "sentence2": "I animate infographics, data visualizations, and social media stories.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Motion Graphics"
+  },
+  {
+    "sentence1": "After Effects motion designer creating explainer videos, logo stings, and title sequences.",
+    "sentence2": "Broadcast designer producing channel packages, lower thirds, and news graphics.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Motion Graphics"
+  },
+  {
+    "sentence1": "After Effects motion designer creating explainer videos, logo stings, and title sequences.",
+    "sentence2": "Kinetic typography specialist animating brand videos and promotional content.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Motion Graphics"
+  },
+  {
+    "sentence1": "I animate infographics, data visualizations, and social media stories.",
+    "sentence2": "Broadcast designer producing channel packages, lower thirds, and news graphics.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Motion Graphics"
+  },
+  {
+    "sentence1": "I animate infographics, data visualizations, and social media stories.",
+    "sentence2": "Kinetic typography specialist animating brand videos and promotional content.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Motion Graphics"
+  },
+  {
+    "sentence1": "Broadcast designer producing channel packages, lower thirds, and news graphics.",
+    "sentence2": "Kinetic typography specialist animating brand videos and promotional content.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Motion Graphics"
+  },
+  {
+    "sentence1": "SEO copywriter producing blog posts, pillar pages, and product descriptions.",
+    "sentence2": "Social media manager writing captions, newsletters, and LinkedIn thought leadership.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Content Creation"
+  },
+  {
+    "sentence1": "SEO copywriter producing blog posts, pillar pages, and product descriptions.",
+    "sentence2": "Content strategist planning editorial calendars and multi-channel campaigns.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Content Creation"
+  },
+  {
+    "sentence1": "SEO copywriter producing blog posts, pillar pages, and product descriptions.",
+    "sentence2": "I write long-form B2B articles, case studies, and white papers.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Content Creation"
+  },
+  {
+    "sentence1": "Social media manager writing captions, newsletters, and LinkedIn thought leadership.",
+    "sentence2": "Content strategist planning editorial calendars and multi-channel campaigns.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Content Creation"
+  },
+  {
+    "sentence1": "Social media manager writing captions, newsletters, and LinkedIn thought leadership.",
+    "sentence2": "I write long-form B2B articles, case studies, and white papers.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Content Creation"
+  },
+  {
+    "sentence1": "Content strategist planning editorial calendars and multi-channel campaigns.",
+    "sentence2": "I write long-form B2B articles, case studies, and white papers.",
+    "label": 1.0,
+    "category": "Design & Creativity",
+    "subcategory": "Content Creation"
+  },
+  {
+    "sentence1": "English tutor helping non-native speakers with grammar, writing, and pronunciation.",
+    "sentence2": "IELTS and TOEFL prep coach with 8.0+ band score strategies.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "English"
+  },
+  {
+    "sentence1": "English tutor helping non-native speakers with grammar, writing, and pronunciation.",
+    "sentence2": "Business English trainer for professionals preparing for presentations and meetings.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "English"
+  },
+  {
+    "sentence1": "English tutor helping non-native speakers with grammar, writing, and pronunciation.",
+    "sentence2": "I coach academic writing, essay structure, and citation styles at university level.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "English"
+  },
+  {
+    "sentence1": "IELTS and TOEFL prep coach with 8.0+ band score strategies.",
+    "sentence2": "Business English trainer for professionals preparing for presentations and meetings.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "English"
+  },
+  {
+    "sentence1": "IELTS and TOEFL prep coach with 8.0+ band score strategies.",
+    "sentence2": "I coach academic writing, essay structure, and citation styles at university level.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "English"
+  },
+  {
+    "sentence1": "Business English trainer for professionals preparing for presentations and meetings.",
+    "sentence2": "I coach academic writing, essay structure, and citation styles at university level.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "English"
+  },
+  {
+    "sentence1": "French teacher for absolute beginners to advanced learners, all ages.",
+    "sentence2": "DELF and DALF exam preparation coach with proven pass rates.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "French"
+  },
+  {
+    "sentence1": "French teacher for absolute beginners to advanced learners, all ages.",
+    "sentence2": "Business French tutor helping professionals write formal emails and reports.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "French"
+  },
+  {
+    "sentence1": "French teacher for absolute beginners to advanced learners, all ages.",
+    "sentence2": "Conversational French coach using immersive discussion-based lessons.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "French"
+  },
+  {
+    "sentence1": "DELF and DALF exam preparation coach with proven pass rates.",
+    "sentence2": "Business French tutor helping professionals write formal emails and reports.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "French"
+  },
+  {
+    "sentence1": "DELF and DALF exam preparation coach with proven pass rates.",
+    "sentence2": "Conversational French coach using immersive discussion-based lessons.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "French"
+  },
+  {
+    "sentence1": "Business French tutor helping professionals write formal emails and reports.",
+    "sentence2": "Conversational French coach using immersive discussion-based lessons.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "French"
+  },
+  {
+    "sentence1": "Modern Standard Arabic tutor for reading news and formal documents.",
+    "sentence2": "Egyptian colloquial Arabic coach for daily conversation and travel.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Arabic"
+  },
+  {
+    "sentence1": "Modern Standard Arabic tutor for reading news and formal documents.",
+    "sentence2": "Quranic Arabic teacher focusing on recitation, tajweed, and comprehension.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Arabic"
+  },
+  {
+    "sentence1": "Modern Standard Arabic tutor for reading news and formal documents.",
+    "sentence2": "Arabic calligraphy and grammar instructor for all skill levels.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Arabic"
+  },
+  {
+    "sentence1": "Egyptian colloquial Arabic coach for daily conversation and travel.",
+    "sentence2": "Quranic Arabic teacher focusing on recitation, tajweed, and comprehension.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Arabic"
+  },
+  {
+    "sentence1": "Egyptian colloquial Arabic coach for daily conversation and travel.",
+    "sentence2": "Arabic calligraphy and grammar instructor for all skill levels.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Arabic"
+  },
+  {
+    "sentence1": "Quranic Arabic teacher focusing on recitation, tajweed, and comprehension.",
+    "sentence2": "Arabic calligraphy and grammar instructor for all skill levels.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Arabic"
+  },
+  {
+    "sentence1": "Spanish teacher covering grammar, conversation, and Latin American dialects.",
+    "sentence2": "DELE exam preparation tutor with structured practice tests and feedback.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Spanish"
+  },
+  {
+    "sentence1": "Spanish teacher covering grammar, conversation, and Latin American dialects.",
+    "sentence2": "Business Spanish coach for professionals in international markets.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Spanish"
+  },
+  {
+    "sentence1": "Spanish teacher covering grammar, conversation, and Latin American dialects.",
+    "sentence2": "Conversational Spanish coach using storytelling and immersive role-play.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Spanish"
+  },
+  {
+    "sentence1": "DELE exam preparation tutor with structured practice tests and feedback.",
+    "sentence2": "Business Spanish coach for professionals in international markets.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Spanish"
+  },
+  {
+    "sentence1": "DELE exam preparation tutor with structured practice tests and feedback.",
+    "sentence2": "Conversational Spanish coach using storytelling and immersive role-play.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Spanish"
+  },
+  {
+    "sentence1": "Business Spanish coach for professionals in international markets.",
+    "sentence2": "Conversational Spanish coach using storytelling and immersive role-play.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Spanish"
+  },
+  {
+    "sentence1": "Simultaneous interpreter for conferences, webinars, and international meetings.",
+    "sentence2": "Live translator covering Arabic-English-French in real-time for events.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Live Translation"
+  },
+  {
+    "sentence1": "Simultaneous interpreter for conferences, webinars, and international meetings.",
+    "sentence2": "Consecutive interpreter for business negotiations and legal proceedings.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Live Translation"
+  },
+  {
+    "sentence1": "Simultaneous interpreter for conferences, webinars, and international meetings.",
+    "sentence2": "I provide live subtitling and real-time captioning for online broadcasts.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Live Translation"
+  },
+  {
+    "sentence1": "Live translator covering Arabic-English-French in real-time for events.",
+    "sentence2": "Consecutive interpreter for business negotiations and legal proceedings.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Live Translation"
+  },
+  {
+    "sentence1": "Live translator covering Arabic-English-French in real-time for events.",
+    "sentence2": "I provide live subtitling and real-time captioning for online broadcasts.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Live Translation"
+  },
+  {
+    "sentence1": "Consecutive interpreter for business negotiations and legal proceedings.",
+    "sentence2": "I provide live subtitling and real-time captioning for online broadcasts.",
+    "label": 1.0,
+    "category": "Languages & Translation",
+    "subcategory": "Live Translation"
+  },
+  {
+    "sentence1": "PhD candidate tutoring calculus, linear algebra, and statistics for university students.",
+    "sentence2": "High school math tutor covering algebra, geometry, and AP Calculus BC.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Math Tutoring"
+  },
+  {
+    "sentence1": "PhD candidate tutoring calculus, linear algebra, and statistics for university students.",
+    "sentence2": "I explain difficult math proofs clearly and help students develop problem-solving skills.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Math Tutoring"
+  },
+  {
+    "sentence1": "PhD candidate tutoring calculus, linear algebra, and statistics for university students.",
+    "sentence2": "IB and A-Level mathematics tutor with structured lesson plans and past papers.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Math Tutoring"
+  },
+  {
+    "sentence1": "High school math tutor covering algebra, geometry, and AP Calculus BC.",
+    "sentence2": "I explain difficult math proofs clearly and help students develop problem-solving skills.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Math Tutoring"
+  },
+  {
+    "sentence1": "High school math tutor covering algebra, geometry, and AP Calculus BC.",
+    "sentence2": "IB and A-Level mathematics tutor with structured lesson plans and past papers.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Math Tutoring"
+  },
+  {
+    "sentence1": "I explain difficult math proofs clearly and help students develop problem-solving skills.",
+    "sentence2": "IB and A-Level mathematics tutor with structured lesson plans and past papers.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Math Tutoring"
+  },
+  {
+    "sentence1": "Physics tutor covering mechanics, thermodynamics, and electromagnetism at A-Level.",
+    "sentence2": "Organic chemistry tutor helping students master reactions and mechanisms.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Science Tutoring"
+  },
+  {
+    "sentence1": "Physics tutor covering mechanics, thermodynamics, and electromagnetism at A-Level.",
+    "sentence2": "Biology tutor specializing in cell biology, genetics, and ecology for IB students.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Science Tutoring"
+  },
+  {
+    "sentence1": "Physics tutor covering mechanics, thermodynamics, and electromagnetism at A-Level.",
+    "sentence2": "I run virtual lab demonstrations and help with science project methodologies.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Science Tutoring"
+  },
+  {
+    "sentence1": "Organic chemistry tutor helping students master reactions and mechanisms.",
+    "sentence2": "Biology tutor specializing in cell biology, genetics, and ecology for IB students.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Science Tutoring"
+  },
+  {
+    "sentence1": "Organic chemistry tutor helping students master reactions and mechanisms.",
+    "sentence2": "I run virtual lab demonstrations and help with science project methodologies.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Science Tutoring"
+  },
+  {
+    "sentence1": "Biology tutor specializing in cell biology, genetics, and ecology for IB students.",
+    "sentence2": "I run virtual lab demonstrations and help with science project methodologies.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Science Tutoring"
+  },
+  {
+    "sentence1": "Public speaking coach helping professionals become confident presenters.",
+    "sentence2": "Accent reduction specialist for non-native English speakers in corporate settings.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Language Coaching"
+  },
+  {
+    "sentence1": "Public speaking coach helping professionals become confident presenters.",
+    "sentence2": "Communication skills trainer for job interviews and salary negotiations.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Language Coaching"
+  },
+  {
+    "sentence1": "Public speaking coach helping professionals become confident presenters.",
+    "sentence2": "I coach TEDx speakers on storytelling structure, body language, and delivery.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Language Coaching"
+  },
+  {
+    "sentence1": "Accent reduction specialist for non-native English speakers in corporate settings.",
+    "sentence2": "Communication skills trainer for job interviews and salary negotiations.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Language Coaching"
+  },
+  {
+    "sentence1": "Accent reduction specialist for non-native English speakers in corporate settings.",
+    "sentence2": "I coach TEDx speakers on storytelling structure, body language, and delivery.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Language Coaching"
+  },
+  {
+    "sentence1": "Communication skills trainer for job interviews and salary negotiations.",
+    "sentence2": "I coach TEDx speakers on storytelling structure, body language, and delivery.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Language Coaching"
+  },
+  {
+    "sentence1": "SAT/ACT prep tutor improving scores by 200+ points with targeted drills.",
+    "sentence2": "GRE and GMAT coach with adaptive practice tests and verbal strategy.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Exam Prep"
+  },
+  {
+    "sentence1": "SAT/ACT prep tutor improving scores by 200+ points with targeted drills.",
+    "sentence2": "IELTS tutor helping students achieve band 7+ with weekly mock tests.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Exam Prep"
+  },
+  {
+    "sentence1": "SAT/ACT prep tutor improving scores by 200+ points with targeted drills.",
+    "sentence2": "Medical entrance exam coach covering biology, chemistry, and critical thinking.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Exam Prep"
+  },
+  {
+    "sentence1": "GRE and GMAT coach with adaptive practice tests and verbal strategy.",
+    "sentence2": "IELTS tutor helping students achieve band 7+ with weekly mock tests.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Exam Prep"
+  },
+  {
+    "sentence1": "GRE and GMAT coach with adaptive practice tests and verbal strategy.",
+    "sentence2": "Medical entrance exam coach covering biology, chemistry, and critical thinking.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Exam Prep"
+  },
+  {
+    "sentence1": "IELTS tutor helping students achieve band 7+ with weekly mock tests.",
+    "sentence2": "Medical entrance exam coach covering biology, chemistry, and critical thinking.",
+    "label": 1.0,
+    "category": "Education & Tutoring",
+    "subcategory": "Exam Prep"
+  },
+  {
+    "sentence1": "Certified bookkeeper managing accounts receivable/payable in QuickBooks Online.",
+    "sentence2": "I reconcile bank statements, categorize transactions, and prepare monthly P&L reports.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Bookkeeping"
+  },
+  {
+    "sentence1": "Certified bookkeeper managing accounts receivable/payable in QuickBooks Online.",
+    "sentence2": "Small business accountant handling VAT returns, payroll, and year-end closings.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Bookkeeping"
+  },
+  {
+    "sentence1": "Certified bookkeeper managing accounts receivable/payable in QuickBooks Online.",
+    "sentence2": "Xero certified bookkeeper cleaning up messy accounts and setting up chart of accounts.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Bookkeeping"
+  },
+  {
+    "sentence1": "I reconcile bank statements, categorize transactions, and prepare monthly P&L reports.",
+    "sentence2": "Small business accountant handling VAT returns, payroll, and year-end closings.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Bookkeeping"
+  },
+  {
+    "sentence1": "I reconcile bank statements, categorize transactions, and prepare monthly P&L reports.",
+    "sentence2": "Xero certified bookkeeper cleaning up messy accounts and setting up chart of accounts.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Bookkeeping"
+  },
+  {
+    "sentence1": "Small business accountant handling VAT returns, payroll, and year-end closings.",
+    "sentence2": "Xero certified bookkeeper cleaning up messy accounts and setting up chart of accounts.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Bookkeeping"
+  },
+  {
+    "sentence1": "PowerPoint designer creating visually compelling pitch decks for investors.",
+    "sentence2": "I redesign bland slides into stunning visual stories with data visualization.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Presentation Support"
+  },
+  {
+    "sentence1": "PowerPoint designer creating visually compelling pitch decks for investors.",
+    "sentence2": "Google Slides expert building reusable presentation templates for sales teams.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Presentation Support"
+  },
+  {
+    "sentence1": "PowerPoint designer creating visually compelling pitch decks for investors.",
+    "sentence2": "Pitch deck consultant structuring narrative arc and visual hierarchy for startups.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Presentation Support"
+  },
+  {
+    "sentence1": "I redesign bland slides into stunning visual stories with data visualization.",
+    "sentence2": "Google Slides expert building reusable presentation templates for sales teams.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Presentation Support"
+  },
+  {
+    "sentence1": "I redesign bland slides into stunning visual stories with data visualization.",
+    "sentence2": "Pitch deck consultant structuring narrative arc and visual hierarchy for startups.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Presentation Support"
+  },
+  {
+    "sentence1": "Google Slides expert building reusable presentation templates for sales teams.",
+    "sentence2": "Pitch deck consultant structuring narrative arc and visual hierarchy for startups.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Presentation Support"
+  },
+  {
+    "sentence1": "Market researcher conducting competitive analysis and consumer surveys.",
+    "sentence2": "I build industry reports covering market size, key players, and growth trends.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Market Research"
+  },
+  {
+    "sentence1": "Market researcher conducting competitive analysis and consumer surveys.",
+    "sentence2": "Consumer insights analyst running focus groups and synthesizing qualitative data.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Market Research"
+  },
+  {
+    "sentence1": "Market researcher conducting competitive analysis and consumer surveys.",
+    "sentence2": "Business analyst delivering TAM/SAM/SOM analysis for investor presentations.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Market Research"
+  },
+  {
+    "sentence1": "I build industry reports covering market size, key players, and growth trends.",
+    "sentence2": "Consumer insights analyst running focus groups and synthesizing qualitative data.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Market Research"
+  },
+  {
+    "sentence1": "I build industry reports covering market size, key players, and growth trends.",
+    "sentence2": "Business analyst delivering TAM/SAM/SOM analysis for investor presentations.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Market Research"
+  },
+  {
+    "sentence1": "Consumer insights analyst running focus groups and synthesizing qualitative data.",
+    "sentence2": "Business analyst delivering TAM/SAM/SOM analysis for investor presentations.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "Market Research"
+  },
+  {
+    "sentence1": "Resume writer and LinkedIn optimizer helping candidates land interviews at FAANG.",
+    "sentence2": "Career coach providing mock interviews, feedback, and negotiation strategies.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "CV & Interview Coaching"
+  },
+  {
+    "sentence1": "Resume writer and LinkedIn optimizer helping candidates land interviews at FAANG.",
+    "sentence2": "I write ATS-optimized resumes tailored to specific job descriptions.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "CV & Interview Coaching"
+  },
+  {
+    "sentence1": "Resume writer and LinkedIn optimizer helping candidates land interviews at FAANG.",
+    "sentence2": "Executive career coach helping C-level candidates with executive positioning.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "CV & Interview Coaching"
+  },
+  {
+    "sentence1": "Career coach providing mock interviews, feedback, and negotiation strategies.",
+    "sentence2": "I write ATS-optimized resumes tailored to specific job descriptions.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "CV & Interview Coaching"
+  },
+  {
+    "sentence1": "Career coach providing mock interviews, feedback, and negotiation strategies.",
+    "sentence2": "Executive career coach helping C-level candidates with executive positioning.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "CV & Interview Coaching"
+  },
+  {
+    "sentence1": "I write ATS-optimized resumes tailored to specific job descriptions.",
+    "sentence2": "Executive career coach helping C-level candidates with executive positioning.",
+    "label": 1.0,
+    "category": "Business & Finance",
+    "subcategory": "CV & Interview Coaching"
+  },
+  {
+    "sentence1": "Personal chef creating healthy weekly meal plans and cooking them at your home.",
+    "sentence2": "Culinary instructor teaching knife skills, sauce techniques, and baking basics.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Cooking"
+  },
+  {
+    "sentence1": "Personal chef creating healthy weekly meal plans and cooking them at your home.",
+    "sentence2": "Meal prep coach helping busy professionals batch-cook nutritious dinners.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Cooking"
+  },
+  {
+    "sentence1": "Personal chef creating healthy weekly meal plans and cooking them at your home.",
+    "sentence2": "Pastry chef sharing cake decorating, bread baking, and dessert recipes.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Cooking"
+  },
+  {
+    "sentence1": "Culinary instructor teaching knife skills, sauce techniques, and baking basics.",
+    "sentence2": "Meal prep coach helping busy professionals batch-cook nutritious dinners.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Cooking"
+  },
+  {
+    "sentence1": "Culinary instructor teaching knife skills, sauce techniques, and baking basics.",
+    "sentence2": "Pastry chef sharing cake decorating, bread baking, and dessert recipes.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Cooking"
+  },
+  {
+    "sentence1": "Meal prep coach helping busy professionals batch-cook nutritious dinners.",
+    "sentence2": "Pastry chef sharing cake decorating, bread baking, and dessert recipes.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Cooking"
+  },
+  {
+    "sentence1": "Professional organizer decluttering homes using the KonMari method.",
+    "sentence2": "I design storage systems for kitchens, closets, and home offices.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Home Organization"
+  },
+  {
+    "sentence1": "Professional organizer decluttering homes using the KonMari method.",
+    "sentence2": "Home organization consultant helping families maintain tidy living spaces.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Home Organization"
+  },
+  {
+    "sentence1": "Professional organizer decluttering homes using the KonMari method.",
+    "sentence2": "Moving coordinator planning and organizing home transitions efficiently.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Home Organization"
+  },
+  {
+    "sentence1": "I design storage systems for kitchens, closets, and home offices.",
+    "sentence2": "Home organization consultant helping families maintain tidy living spaces.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Home Organization"
+  },
+  {
+    "sentence1": "I design storage systems for kitchens, closets, and home offices.",
+    "sentence2": "Moving coordinator planning and organizing home transitions efficiently.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Home Organization"
+  },
+  {
+    "sentence1": "Home organization consultant helping families maintain tidy living spaces.",
+    "sentence2": "Moving coordinator planning and organizing home transitions efficiently.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Home Organization"
+  },
+  {
+    "sentence1": "Dog trainer using positive reinforcement for obedience and behavior correction.",
+    "sentence2": "Pet sitter providing overnight stays and daily walks for dogs and cats.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Pet Care"
+  },
+  {
+    "sentence1": "Dog trainer using positive reinforcement for obedience and behavior correction.",
+    "sentence2": "I provide grooming services: bathing, trimming, nail clipping for small breeds.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Pet Care"
+  },
+  {
+    "sentence1": "Dog trainer using positive reinforcement for obedience and behavior correction.",
+    "sentence2": "Animal behaviorist consulting on anxiety, aggression, and separation issues.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Pet Care"
+  },
+  {
+    "sentence1": "Pet sitter providing overnight stays and daily walks for dogs and cats.",
+    "sentence2": "I provide grooming services: bathing, trimming, nail clipping for small breeds.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Pet Care"
+  },
+  {
+    "sentence1": "Pet sitter providing overnight stays and daily walks for dogs and cats.",
+    "sentence2": "Animal behaviorist consulting on anxiety, aggression, and separation issues.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Pet Care"
+  },
+  {
+    "sentence1": "I provide grooming services: bathing, trimming, nail clipping for small breeds.",
+    "sentence2": "Animal behaviorist consulting on anxiety, aggression, and separation issues.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Pet Care"
+  },
+  {
+    "sentence1": "Personal assistant handling grocery shopping, appointment scheduling, and deliveries.",
+    "sentence2": "Virtual assistant managing emails, calendars, and travel bookings remotely.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Errand Support"
+  },
+  {
+    "sentence1": "Personal assistant handling grocery shopping, appointment scheduling, and deliveries.",
+    "sentence2": "I run errands for busy professionals: pharmacy, bank, dry cleaning, post office.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Errand Support"
+  },
+  {
+    "sentence1": "Personal assistant handling grocery shopping, appointment scheduling, and deliveries.",
+    "sentence2": "Lifestyle manager coordinating household contractors and service appointments.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Errand Support"
+  },
+  {
+    "sentence1": "Virtual assistant managing emails, calendars, and travel bookings remotely.",
+    "sentence2": "I run errands for busy professionals: pharmacy, bank, dry cleaning, post office.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Errand Support"
+  },
+  {
+    "sentence1": "Virtual assistant managing emails, calendars, and travel bookings remotely.",
+    "sentence2": "Lifestyle manager coordinating household contractors and service appointments.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Errand Support"
+  },
+  {
+    "sentence1": "I run errands for busy professionals: pharmacy, bank, dry cleaning, post office.",
+    "sentence2": "Lifestyle manager coordinating household contractors and service appointments.",
+    "label": 1.0,
+    "category": "Home & Lifestyle",
+    "subcategory": "Errand Support"
+  },
+  {
+    "sentence1": "Certified personal trainer designing HIIT and strength programs for weight loss.",
+    "sentence2": "Online fitness coach delivering personalized 12-week transformation programs.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Fitness Coaching"
+  },
+  {
+    "sentence1": "Certified personal trainer designing HIIT and strength programs for weight loss.",
+    "sentence2": "I create progressive overload programs for beginners to advanced athletes.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Fitness Coaching"
+  },
+  {
+    "sentence1": "Certified personal trainer designing HIIT and strength programs for weight loss.",
+    "sentence2": "Sports conditioning coach for runners, cyclists, and team sport athletes.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Fitness Coaching"
+  },
+  {
+    "sentence1": "Online fitness coach delivering personalized 12-week transformation programs.",
+    "sentence2": "I create progressive overload programs for beginners to advanced athletes.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Fitness Coaching"
+  },
+  {
+    "sentence1": "Online fitness coach delivering personalized 12-week transformation programs.",
+    "sentence2": "Sports conditioning coach for runners, cyclists, and team sport athletes.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Fitness Coaching"
+  },
+  {
+    "sentence1": "I create progressive overload programs for beginners to advanced athletes.",
+    "sentence2": "Sports conditioning coach for runners, cyclists, and team sport athletes.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Fitness Coaching"
+  },
+  {
+    "sentence1": "Registered yoga teacher (500 RYT) offering vinyasa, hatha, and restorative classes.",
+    "sentence2": "I design private yoga sessions for stress relief, flexibility, and mindfulness.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Yoga"
+  },
+  {
+    "sentence1": "Registered yoga teacher (500 RYT) offering vinyasa, hatha, and restorative classes.",
+    "sentence2": "Prenatal yoga instructor guiding safe practice through all trimesters.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Yoga"
+  },
+  {
+    "sentence1": "Registered yoga teacher (500 RYT) offering vinyasa, hatha, and restorative classes.",
+    "sentence2": "Yoga therapist combining breathwork and asana for chronic pain management.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Yoga"
+  },
+  {
+    "sentence1": "I design private yoga sessions for stress relief, flexibility, and mindfulness.",
+    "sentence2": "Prenatal yoga instructor guiding safe practice through all trimesters.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Yoga"
+  },
+  {
+    "sentence1": "I design private yoga sessions for stress relief, flexibility, and mindfulness.",
+    "sentence2": "Yoga therapist combining breathwork and asana for chronic pain management.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Yoga"
+  },
+  {
+    "sentence1": "Prenatal yoga instructor guiding safe practice through all trimesters.",
+    "sentence2": "Yoga therapist combining breathwork and asana for chronic pain management.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Yoga"
+  },
+  {
+    "sentence1": "Registered dietitian creating personalized meal plans for weight management.",
+    "sentence2": "Sports nutritionist optimizing macros and timing for athletic performance.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Nutrition Guidance"
+  },
+  {
+    "sentence1": "Registered dietitian creating personalized meal plans for weight management.",
+    "sentence2": "I provide evidence-based nutrition coaching for gut health and energy levels.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Nutrition Guidance"
+  },
+  {
+    "sentence1": "Registered dietitian creating personalized meal plans for weight management.",
+    "sentence2": "Plant-based nutrition coach helping clients transition to vegan diets healthily.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Nutrition Guidance"
+  },
+  {
+    "sentence1": "Sports nutritionist optimizing macros and timing for athletic performance.",
+    "sentence2": "I provide evidence-based nutrition coaching for gut health and energy levels.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Nutrition Guidance"
+  },
+  {
+    "sentence1": "Sports nutritionist optimizing macros and timing for athletic performance.",
+    "sentence2": "Plant-based nutrition coach helping clients transition to vegan diets healthily.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Nutrition Guidance"
+  },
+  {
+    "sentence1": "I provide evidence-based nutrition coaching for gut health and energy levels.",
+    "sentence2": "Plant-based nutrition coach helping clients transition to vegan diets healthily.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Nutrition Guidance"
+  },
+  {
+    "sentence1": "Mindfulness meditation teacher offering guided sessions for stress and anxiety.",
+    "sentence2": "I teach Vipassana, loving-kindness, and body scan techniques for beginners.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Meditation"
+  },
+  {
+    "sentence1": "Mindfulness meditation teacher offering guided sessions for stress and anxiety.",
+    "sentence2": "Corporate mindfulness coach delivering workplace wellness programs.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Meditation"
+  },
+  {
+    "sentence1": "Mindfulness meditation teacher offering guided sessions for stress and anxiety.",
+    "sentence2": "Sleep coach combining meditation and breathing exercises for insomnia relief.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Meditation"
+  },
+  {
+    "sentence1": "I teach Vipassana, loving-kindness, and body scan techniques for beginners.",
+    "sentence2": "Corporate mindfulness coach delivering workplace wellness programs.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Meditation"
+  },
+  {
+    "sentence1": "I teach Vipassana, loving-kindness, and body scan techniques for beginners.",
+    "sentence2": "Sleep coach combining meditation and breathing exercises for insomnia relief.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Meditation"
+  },
+  {
+    "sentence1": "Corporate mindfulness coach delivering workplace wellness programs.",
+    "sentence2": "Sleep coach combining meditation and breathing exercises for insomnia relief.",
+    "label": 1.0,
+    "category": "Health & Wellness",
+    "subcategory": "Meditation"
+  },
+  {
+    "sentence1": "Guitar teacher covering acoustic, electric, and fingerstyle for all levels.",
+    "sentence2": "I teach music theory, scales, and chord progressions through songs you love.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Guitar Lessons"
+  },
+  {
+    "sentence1": "Guitar teacher covering acoustic, electric, and fingerstyle for all levels.",
+    "sentence2": "Rock and blues guitarist teaching improvisation, licks, and gear setup.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Guitar Lessons"
+  },
+  {
+    "sentence1": "Guitar teacher covering acoustic, electric, and fingerstyle for all levels.",
+    "sentence2": "Classical guitar instructor focusing on technique, sight-reading, and repertoire.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Guitar Lessons"
+  },
+  {
+    "sentence1": "I teach music theory, scales, and chord progressions through songs you love.",
+    "sentence2": "Rock and blues guitarist teaching improvisation, licks, and gear setup.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Guitar Lessons"
+  },
+  {
+    "sentence1": "I teach music theory, scales, and chord progressions through songs you love.",
+    "sentence2": "Classical guitar instructor focusing on technique, sight-reading, and repertoire.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Guitar Lessons"
+  },
+  {
+    "sentence1": "Rock and blues guitarist teaching improvisation, licks, and gear setup.",
+    "sentence2": "Classical guitar instructor focusing on technique, sight-reading, and repertoire.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Guitar Lessons"
+  },
+  {
+    "sentence1": "Piano teacher for beginners to advanced students covering classical and contemporary.",
+    "sentence2": "I teach sight-reading, scales, and jazz harmony on piano and keyboard.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Piano Lessons"
+  },
+  {
+    "sentence1": "Piano teacher for beginners to advanced students covering classical and contemporary.",
+    "sentence2": "RCM exam prep piano tutor helping students pass grade exams with confidence.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Piano Lessons"
+  },
+  {
+    "sentence1": "Piano teacher for beginners to advanced students covering classical and contemporary.",
+    "sentence2": "Pop and film score piano coach teaching by ear with chord charts.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Piano Lessons"
+  },
+  {
+    "sentence1": "I teach sight-reading, scales, and jazz harmony on piano and keyboard.",
+    "sentence2": "RCM exam prep piano tutor helping students pass grade exams with confidence.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Piano Lessons"
+  },
+  {
+    "sentence1": "I teach sight-reading, scales, and jazz harmony on piano and keyboard.",
+    "sentence2": "Pop and film score piano coach teaching by ear with chord charts.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Piano Lessons"
+  },
+  {
+    "sentence1": "RCM exam prep piano tutor helping students pass grade exams with confidence.",
+    "sentence2": "Pop and film score piano coach teaching by ear with chord charts.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Piano Lessons"
+  },
+  {
+    "sentence1": "Vocal coach specializing in breath support, range extension, and tone quality.",
+    "sentence2": "I prepare singers for auditions, open mics, and recording sessions.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Singing Coaching"
+  },
+  {
+    "sentence1": "Vocal coach specializing in breath support, range extension, and tone quality.",
+    "sentence2": "Pop and R&B singing teacher focusing on melisma, riffs, and stage presence.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Singing Coaching"
+  },
+  {
+    "sentence1": "Vocal coach specializing in breath support, range extension, and tone quality.",
+    "sentence2": "Classical voice instructor teaching bel canto technique and aria repertoire.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Singing Coaching"
+  },
+  {
+    "sentence1": "I prepare singers for auditions, open mics, and recording sessions.",
+    "sentence2": "Pop and R&B singing teacher focusing on melisma, riffs, and stage presence.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Singing Coaching"
+  },
+  {
+    "sentence1": "I prepare singers for auditions, open mics, and recording sessions.",
+    "sentence2": "Classical voice instructor teaching bel canto technique and aria repertoire.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Singing Coaching"
+  },
+  {
+    "sentence1": "Pop and R&B singing teacher focusing on melisma, riffs, and stage presence.",
+    "sentence2": "Classical voice instructor teaching bel canto technique and aria repertoire.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Singing Coaching"
+  },
+  {
+    "sentence1": "Art teacher covering drawing fundamentals: perspective, shading, and proportion.",
+    "sentence2": "I teach watercolor, acrylic, and oil painting for beginners and intermediates.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Drawing & Painting"
+  },
+  {
+    "sentence1": "Art teacher covering drawing fundamentals: perspective, shading, and proportion.",
+    "sentence2": "Digital illustration instructor teaching Procreate and Illustrator workflows.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Drawing & Painting"
+  },
+  {
+    "sentence1": "Art teacher covering drawing fundamentals: perspective, shading, and proportion.",
+    "sentence2": "Portrait drawing coach helping students capture likeness and expression.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Drawing & Painting"
+  },
+  {
+    "sentence1": "I teach watercolor, acrylic, and oil painting for beginners and intermediates.",
+    "sentence2": "Digital illustration instructor teaching Procreate and Illustrator workflows.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Drawing & Painting"
+  },
+  {
+    "sentence1": "I teach watercolor, acrylic, and oil painting for beginners and intermediates.",
+    "sentence2": "Portrait drawing coach helping students capture likeness and expression.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Drawing & Painting"
+  },
+  {
+    "sentence1": "Digital illustration instructor teaching Procreate and Illustrator workflows.",
+    "sentence2": "Portrait drawing coach helping students capture likeness and expression.",
+    "label": 1.0,
+    "category": "Music & Arts",
+    "subcategory": "Drawing & Painting"
+  }
+]
