@@ -23,8 +23,28 @@ export function getCsrfToken() {
   return currentCsrfToken;
 }
 
+/**
+ * Read the CSRF token directly from the cookie.
+ * The server sets skillrent_csrf with httpOnly: false, so JS can read it.
+ * This is the source of truth — the module-level variable is just a cache
+ * that gets lost on Vite HMR reloads while the cookie survives.
+ */
+function getCsrfFromCookie() {
+  if (typeof document === 'undefined') return '';
+  const entry = document.cookie
+    .split(';')
+    .map((c) => c.trim())
+    .find((c) => c.startsWith('skillrent_csrf='));
+  return entry ? entry.slice('skillrent_csrf='.length) : '';
+}
+
 export async function api(path, { method = 'GET', body, token, signal } = {}) {
   const normalizedMethod = method.toUpperCase();
+
+  // Prefer the in-memory token (freshest), fall back to cookie so that
+  // Vite HMR reloads (which reset module state) don't break existing sessions.
+  const csrfToken = currentCsrfToken || getCsrfFromCookie();
+
   const res = await fetch(`${API}${path}`, {
     method: normalizedMethod,
     credentials: 'include',
@@ -34,8 +54,8 @@ export async function api(path, { method = 'GET', body, token, signal } = {}) {
       ...((token || currentAccessToken)
         ? { Authorization: `Bearer ${token || currentAccessToken}` }
         : {}),
-      ...(normalizedMethod !== 'GET' && currentCsrfToken
-        ? { 'x-csrf-token': currentCsrfToken }
+      ...(normalizedMethod !== 'GET' && csrfToken
+        ? { 'x-csrf-token': csrfToken }
         : {}),
     },
     body: body ? JSON.stringify(body) : undefined,

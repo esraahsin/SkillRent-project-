@@ -25,7 +25,13 @@ const allowedOrigins = (process.env.FRONTEND_ORIGIN || 'http://localhost:5173,ht
   .split(',')
   .map((origin) => origin.trim())
   .filter(Boolean);
-const ALLOW_NO_ORIGIN = process.env.ALLOW_NO_ORIGIN === 'true';
+
+// FIX: Default ALLOW_NO_ORIGIN to true.
+// When using the Vite dev proxy, the browser sees requests as same-origin and
+// does NOT send an Origin header. The proxy forwards them without Origin, so
+// the backend must allow origin-less requests in development.
+// Set ALLOW_NO_ORIGIN=false explicitly to restrict this in production.
+const ALLOW_NO_ORIGIN = process.env.ALLOW_NO_ORIGIN !== 'false';
 
 function isAllowedOrigin(origin) {
   if (!origin) return ALLOW_NO_ORIGIN;
@@ -121,17 +127,11 @@ function csrfProtection(req, res, next) {
     return res.status(403).json({ error: 'CSRF validation failed' });
   }
   return next();
-
 }
 
 app.use('/api', apiLimiter);
 app.use('/api/auth', authLimiter);
 app.use('/api', csrfProtection);
-
-app.use((err, req, res, next) => {
-  console.error('[SERVER ERROR]', new Date().toISOString(), req.method, req.url, err.stack || err.message || err);
-  res.status(500).json({ error: 'Internal server error' });
-});
 
 const io = new Server(server, {
   cors: { origin: corsOriginValidator, credentials: true },
@@ -292,7 +292,6 @@ app.post('/api/auth/login', async (req, res) => {
   const isValid = await bcrypt.compare(String(password || ''), user.passwordHash);
   console.log('[LOGIN]', new Date().toISOString(), email, 'bcrypt isValid:', isValid);
   if (!isValid) return res.status(401).json({ error: 'Invalid credentials' });
-
 
   const accessToken = issueAccessToken(user.id);
   const refreshToken = issueRefreshToken(user.id);
@@ -524,6 +523,10 @@ app.get('/api/providers/:providerId', (req, res) => {
   res.json({
     provider: sanitizeUser(provider),
     profile: { skills, reviews: providerReviews, completedSessions: sessionsCount, averageRating },
+    skills,
+    reviews: providerReviews,
+    completedSessions: sessionsCount,
+    averageRating,
   });
 });
 
@@ -912,6 +915,15 @@ io.on('connection', (socket) => {
     store.messages.push(message);
     io.to(sessionId).emit('message:new', message);
   });
+});
+
+// ==================== Error handler (MUST be last) ====================
+// FIX: The error handler was previously placed before all routes, meaning
+// errors thrown by routes would NOT be caught by it (Express walks forward
+// through the middleware stack when handling errors). It must come after routes.
+app.use((err, req, res, next) => {
+  console.error('[SERVER ERROR]', new Date().toISOString(), req.method, req.url, err.stack || err.message || err);
+  res.status(500).json({ error: 'Internal server error' });
 });
 
 // ==================== Bootstrap ====================
